@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M5R DEV</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="icon-container">
+            <div class="icon-container">
+                <a href="#projects" class="toggle-link"><i class="fa-solid fa-bars"></i></a>
+                <a href="#source-code" class="toggle-link"><i class="fas fa-code"></i></a>
+            </div>
+        </div>
+        <h1>M5R DEV</h1>
+        <div class="icon-container">
+            <button class="toggle-dark-mode" onclick="toggleDarkMode()"><i class="fas fa-sun"></i></button>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="avatar-container" id="about-us">
+            <div class="avatar">
+                <img id="profile-image" src="img/avatar.png" alt="Profile">
+            </div>
+            <h2>Mahmoud Rady</h2>
+            <p>I'm Programmer & Developer</p>
+            <div class="social-links-avatar">
+                <a href="https://www.facebook.com/M5RDEV.Facebook" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/m5rdev/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/channel/UCbFjpt37dvT1GqdXCNQ1Opg" target="_blank"><i
+                        class="fab fa-youtube"></i></a>
+                <a href="https://www.linkedin.com/in/m5r-dev-641575300" target="_blank"><i
+                        class="fab fa-linkedin"></i></a>
+                <a href="https://t.me/m5rdev" target="_blank"><i class="fab fa-telegram"></i></a>
+                <a href="https://github.com/m5rdev" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+
+        <div class="certifications-container" id="certifications">
+            <h2>الشهاده والمهارات</h2>
+            <div class="certifications-content">
+                <h3><strong>الشهاده</strong></h3>
+                <ul>
+                    <li>بكالوريوس هندسة MC Academy</li>
+                </ul>
+                <h3><strong>المهارات</strong></h3>
+                <ul>
+                    <li>C#</li>
+                    <li>C++</li>
+                    <li>Flutter & Dart</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="projects">
+        <h2>مشاريعي البرمجية</h2>
+
+        <div class="project-category" id="projects">
+            <h3>برامج</h3>
+            <ul>
+                <li>
+                    <img src="img/my-programs/muslim.png" alt="muslim encyclopedia">
+                    <h4>موسوعة المسلم</h4>
+                    <h6>وصف البرنامج</h6>
+                </li>
+                <li>
+                    <img src="program2.jpg" alt="برنامج 2">
+                    <h4>برنامج 2</h4>
+                    <h6>وصف البرنامج</h6>
+                </li>
+                <li>
+                    <img src="program3.jpg" alt="برنامج 3">
+                    <h4>برنامج 3</h4>
+                    <h6>وصف البرنامج</h6>
+                </li>
+            </ul>
+        </div>
+
+        <div class="project-category" id="games">
+            <h3>ألعاب</h3>
+            <ul>
+                <li>
+                    <img src="program1.jpg" alt="برنامج 1">
+                    <h4>برنامج 1</h4>
+                    <h6>وصف البرنامج</h6>
+                </li>
+                <li>
+                    <img src="program2.jpg" alt="برنامج 2">
+                    <h4>برنامج 2</h4>
+                    <h6>وصف البرنامج</h6>
+                </li>
+                <li>
+                    <img src="program3.jpg" alt="برنامج 3">
+                    <h4>برنامج 3</h4>
+                    <h6>وصف البرنامج</h6>
+                </li>
+            </ul>
+        </div>
+
+        <div class="project-category" id="source-code">
+            <h3>سورس كود</h3>
+            <ul>
+                <li>
+                    <img src="program1.jpg" alt="برنامج 1">
+                    <h4>برنامج 1</h4>
+                    <h6>وصف البرنامج</h6>
+                </li>
+                <li>
+                    <img src="program2.jpg" alt="برنامج 2">
+                    <h4>برنامج 2</h4>
+                    <h6>وصف البرنامج</h6>
+                </li>
+                <li>
+                    <img src="program3.jpg" alt="برنامج 3">
+                    <h4>برنامج 3</h4>
+                    <h6>وصف البرنامج</h6>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy;2024 M5RDEV</p>
+    </footer>
+
+    <div class="float-icon" onclick="togglePopupMessage()">
+        <i class="fas fa-person-praying"></i>
+    </div>
+
+    <div class="popup-message" id="popupMessage">
+        اللهم أنصر أخواننا المسلمين المستضعفين في فلسطين و السودان وسوريا وكل مكان يارب العالمين
+    </div>
+</body>
+
+</html>

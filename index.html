@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading Page</title>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .loading-container {
+            text-align: center;
+        }
+
+        .loading-image {
+            width: 120px;
+            height: 120px;
+            border: 4px dashed transparent;
+            border-radius: 50%;
+            animation: border-color-change 2s infinite;
+        }
+
+        @keyframes border-color-change {
+            0% {
+                border-color: #006d00;
+            }
+
+            20% {
+                border-color: #2196F3;
+            }
+
+            40% {
+                border-color: #9C27B0;
+            }
+
+            60% {
+                border-color: #E91E63;
+            }
+
+            80% {
+                border-color: #FF5722;
+            }
+
+            100% {
+                border-color: #00FCCB;
+            }
+        }
+    </style>
+    
+    <script>
+        setTimeout(function () {
+            window.location.href = 'm5rdev.html';
+        }, 2000);
+    </script>
+</head>
+
+<body>
+    <div class="loading-container">
+        <img class="loading-image" src="img/avatar.png" alt="Avatar">
+    </div>
+</body>
+
+</html>
