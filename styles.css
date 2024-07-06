@@ -207,6 +207,23 @@ header .icon-container {
     transition: color 0.3s;
 }
 
+.projects li a i {
+    font-size: 30px;
+    color: black;
+}
+
+.dark-mode .projects li a i {
+    color: white;
+}
+
+.projects li a i:hover {
+    color: var(--green-dark);
+}
+
+.dark-mode .projects li a i:hover {
+    color: var(--green-light);
+}
+
 .projects h2::after {
     content: '';
     width: 50%;
