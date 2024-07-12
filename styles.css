@@ -432,11 +432,12 @@ footer {
 .popup-message {
     display: none;
     position: fixed;
-    bottom: 30px;
-    right: 75px;
+    bottom: 4.55%;
+    right: 4%;
     background: white;
     color: black;
     padding: 20px;
+    margin: 0px 10px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     z-index: 10000;
@@ -453,14 +454,17 @@ footer {
 }
 
 @keyframes fadeInOut {
-
-    0%,
-    100% {
+    0%, 100% {
         opacity: 0;
     }
-
     50% {
         opacity: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .popup-message {
+        right: 10px;
     }
 }
 
