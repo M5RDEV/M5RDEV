@@ -1,10 +1,10 @@
 :root {
     --primary: #0d97c9;
     --secondary: #129158;
-    --dark: #1067c4;
+    --dark-secondary: #1067c4;
     --light: #ffffff;
     --accent: #ff6b6b;
-    --dark-secondary: rgba(27,38,59,1);
+    --dark: rgba(27,38,59,1); 
 }
 
 body {
