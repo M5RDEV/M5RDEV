@@ -1,209 +1,162 @@
-<!DOCTYPE html> 
-<html lang="ar" dir="rtl"> 
-<head> 
-    <meta charset="UTF-8"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <title>m5rdev</title> 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" href="img/avatar.png">
-    <style> 
-        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap'); 
+<!DOCTYPE html>  
+<html lang="ar" dir="rtl">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>m5rdev</title>  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> 
+    <link rel="icon" href="img/avatar.png"> 
+    <style>  
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap');  
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Cairo', sans-serif;
-        }
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            font-family: 'Cairo', sans-serif; 
+        } 
 
-        :root {
-            --primary: #08AEEA;
-            --secondary: #2AF598;
-            --dark: #0d1b2a;
-            --light: #ffffff;
-            --accent: #ff6b6b;
-        }
+        :root { 
+            --primary: #08AEEA; 
+            --secondary: #2AF598; 
+            --dark: #0d1b2a; 
+            --light: #ffffff; 
+            --accent: #ff6b6b; 
+        } 
 
-        body {
-            background-color: var(--dark);
-            color: var(--light);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            overflow: auto; /* السماح بالتمرير على الشاشات الصغيرة */
-            background: linear-gradient(135deg, rgba(13,27,42,1) 0%, rgba(27,38,59,1) 100%);
-            padding: 1rem;
-        }
+        body { 
+            background-color: var(--dark); 
+            color: var(--light); 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh; 
+            background: linear-gradient(135deg, rgba(13,27,42,1) 0%, rgba(27,38,59,1) 100%); 
+            padding: 1rem; 
+        } 
 
-        .container {
-            text-align: center;
-            padding: 2rem;
-            position: relative;
-            z-index: 10;
-            width: 100%;
-            max-width: 600px;
-        }
+        .container { 
+            text-align: center; 
+            padding: 2rem; 
+            position: relative; 
+            width: 90%; 
+            max-width: 600px; 
+        } 
 
-        .logo {
-            font-size: 3rem;
-            font-weight: 800;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: 2px;
-        }
+        .logo { 
+            font-size: 3rem; 
+            font-weight: 800; 
+            background: linear-gradient(90deg, var(--primary), var(--secondary)); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            letter-spacing: 2px; 
+            margin-bottom: 1rem;
+        } 
 
-        .tagline {
-            font-size: 1rem;
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 2rem;
-        }
+        .tagline { 
+            font-size: 1rem; 
+            color: rgba(255, 255, 255, 0.7); 
+            margin-bottom: 2rem; 
+        } 
 
-        .loader-container {
-            position: relative;
-            width: 80%;
-            height: 5px;
-            margin: 1rem auto;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 30px;
-            overflow: hidden;
-        }
+        .loader-container { 
+            width: 100%; 
+            max-width: 500px; 
+            height: 5px; 
+            margin: 1rem auto; 
+            background: rgba(255, 255, 255, 0.1); 
+            border-radius: 30px; 
+            overflow: hidden; 
+        } 
 
-        .loader-progress {
-            height: 100%;
-            width: 0;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            animation: loader 2.5s ease-out forwards;
-        }
+        .loader-progress { 
+            height: 100%; 
+            width: 0; 
+            background: linear-gradient(90deg, var(--primary), var(--secondary)); 
+            animation: loader 2.5s ease-out forwards; 
+        } 
 
-        .percentage {
-            position: absolute;
-            right: -30px;
-            top: -20px;
-            font-size: 0.8rem;
-            color: var(--light);
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            padding: 2px 8px;
-        }
+        .percentage { 
+            position: absolute; 
+            right: 0; 
+            top: -25px; 
+            font-size: 0.8rem; 
+            color: var(--light); 
+            background: rgba(255, 255, 255, 0.1); 
+            border-radius: 12px; 
+            padding: 2px 8px; 
+        } 
 
-        .status {
-            margin-top: 1rem;
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.6);
-        }
+        .status { 
+            margin-top: 1rem; 
+            font-size: 0.9rem; 
+            color: rgba(255, 255, 255, 0.6); 
+        } 
 
-        .tech-stack {
-            margin-top: 1rem;
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
+        .tech-stack { 
+            margin-top: 1rem; 
+            display: flex; 
+            justify-content: center; 
+            gap: 15px; 
+            flex-wrap: wrap; 
+        } 
 
-        .tech-icon {
-            font-size: 1.2rem;
-            color: rgba(255, 255, 255, 0.6);
-            transition: all 0.3s ease;
-        }
+        .tech-icon { 
+            font-size: 1.5rem; 
+            color: rgba(255, 255, 255, 0.6); 
+            transition: all 0.3s ease; 
+        } 
 
-        .tech-icon:hover {
-            color: var(--primary);
-            transform: translateY(-5px);
-        }
+        .tech-icon:hover { 
+            color: var(--primary); 
+            transform: translateY(-5px); 
+        } 
 
-        @keyframes loader {
-            from { width: 0; }
-            to { width: 100%; }
-        }
+        @keyframes loader { 
+            from { width: 0; } 
+            to { width: 100%; } 
+        } 
+    </style>  
+</head>  
+<body> 
+    <div class="container">  
+        <div class="logo">m5rdev</div> 
+        <div class="tagline">نبني مستقبل التطوير بأيدٍ عربية</div> 
+        <div class="loader-container"> 
+            <div class="loader-progress" id="progress"></div> 
+            <div class="percentage" id="percentage">0%</div> 
+        </div> 
+        <div class="status" id="status-text">جاري تهيئة البيئة</div> 
+        <div class="tech-stack"> 
+            <i class="fab fa-js-square tech-icon"></i> 
+            <i class="fab fa-react tech-icon"></i> 
+            <i class="fab fa-node tech-icon"></i> 
+            <i class="fab fa-python tech-icon"></i> 
+            <i class="fab fa-php tech-icon"></i> 
+        </div> 
+    </div> 
+    <script> 
+        function updateProgress() { 
+            const percentageText = document.getElementById('percentage'); 
+            const statusText = document.getElementById('status-text'); 
+            let count = 0; 
+            const statusMessages = ["مطور العاب", "مبرمج مواقع", "مبرمج تطبيقات", "الباشمبرمج محمود"]; 
+            const interval = setInterval(() => { 
+                count++; 
+                percentageText.textContent = count + '%'; 
+                if (count === 30) statusText.textContent = statusMessages[1]; 
+                if (count === 70) statusText.textContent = statusMessages[2]; 
+                if (count === 100) { 
+                    statusText.textContent = statusMessages[3]; 
+                    clearInterval(interval); 
+                    setTimeout(() => { 
+                        window.location.href = 'm5rdev.html'; 
+                    }, 800); 
+                } 
+            }, 20); 
+        } 
 
-        @media (max-width: 600px) {
-            .logo {
-                font-size: 2.5rem;
-            }
-
-            .tagline {
-                font-size: 0.9rem;
-            }
-
-            .loader-container {
-                width: 90%;
-            }
-
-            .percentage {
-                right: -20px;
-                top: -15px;
-                font-size: 0.7rem;
-            }
-
-            .tech-icon {
-                font-size: 1rem;
-            }
-        }
-
-        @media (min-width: 600px) and (max-width: 1024px) {
-            .logo {
-                font-size: 3.5rem;
-            }
-
-            .tagline {
-                font-size: 1.1rem;
-            }
-
-            .loader-container {
-                width: 85%;
-            }
-
-            .tech-icon {
-                font-size: 1.3rem;
-            }
-        }
-    </style> 
-</head> 
-<body>
-    <div class="container"> 
-        <div class="logo">m5rdev</div>
-        <div class="tagline">نبني مستقبل التطوير بأيدٍ عربية</div>
-        
-        <div class="loader-container">
-            <div class="loader-progress" id="progress"></div>
-            <div class="percentage" id="percentage">0%</div>
-        </div>
-
-        <div class="status" id="status-text">جاري تهيئة البيئة</div>
-
-        <div class="tech-stack">
-            <i class="fab fa-js-square tech-icon"></i>
-            <i class="fab fa-react tech-icon"></i>
-            <i class="fab fa-node tech-icon"></i>
-            <i class="fab fa-python tech-icon"></i>
-            <i class="fab fa-php tech-icon"></i>
-        </div>
-    </div>
-
-    <script>
-        function updateProgress() {
-            const percentageText = document.getElementById('percentage');
-            const statusText = document.getElementById('status-text');
-            let count = 0;
-            const statusMessages = ["مطور العاب", "مبرمج مواقع", "مبرمج تطبيقات", "الباشمبرمج محمود"];
-            const interval = setInterval(() => {
-                count++;
-                percentageText.textContent = count + '%';
-                if (count === 30) statusText.textContent = statusMessages[1];
-                if (count === 70) statusText.textContent = statusMessages[2];
-                if (count === 100) {
-                    statusText.textContent = statusMessages[3];
-                    clearInterval(interval);
-                    setTimeout(() => {
-                        window.location.href = 'm5rdev.html';
-                    }, 800);
-                }
-            }, 20);
-        }
-
-        window.addEventListener('load', updateProgress);
-    </script>
-</body> 
+        window.addEventListener('load', updateProgress); 
+    </script> 
+</body>  
 </html>
