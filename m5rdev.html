@@ -1,226 +1,0 @@
-<!DOCTYPE html>
-<html lang="ar">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>M5R DEV</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="img/avatar.png">
-    <script src="script.js"></script>
-</head>
-
-<body>
-    <header>
-        <div class="icon-container">
-            <div class="icon-container">
-                <a href="#projects" class="toggle-link"><i class="fa-solid fa-bars"></i></a>
-                <a href="#source-code" class="toggle-link"><i class="fas fa-code"></i></a>
-            </div>
-        </div>
-        <h1>M5R DEV</h1>
-        <div class="icon-container">
-            <button class="toggle-dark-mode" onclick="toggleDarkMode()"><i class="fas fa-sun"></i></button>
-        </div>
-    </header>
-
-    <div class="container">
-        <div class="avatar-container" id="about-us">
-            <div class="avatar">
-                <img id="profile-image" src="img/avatar.png" alt="Profile">
-            </div>
-            <h2>Mahmoud Rady</h2>
-            <p>I'm Programmer & Developer</p>
-            <div class="social-links-avatar">
-                <a href="https://www.facebook.com/M5RDEV.Facebook" target="_blank"><i class="fab fa-facebook"></i></a>
-                <a href="https://www.instagram.com/m5rdev/" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.youtube.com/channel/UCbFjpt37dvT1GqdXCNQ1Opg" target="_blank"><i
-                        class="fab fa-youtube"></i></a>
-                <a href="https://www.linkedin.com/in/m5r-dev-641575300" target="_blank"><i
-                        class="fab fa-linkedin"></i></a>
-                <a href="https://t.me/m5rdev" target="_blank"><i class="fab fa-telegram"></i></a>
-                <a href="https://github.com/m5rdev" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://m5rdev.itch.io/" target="_blank"><i class="fa-brands fa-itch-io"></i></a>
-            </div>
-        </div>
-
-        <div class="certifications-container" id="certifications">
-            <h2>الشهاده والمهارات</h2>
-            <div class="certifications-content">
-                <h3><strong>الشهاده</strong></h3>
-                <ul>
-                    <li>بكالوريوس هندسة MC Academy</li>
-                </ul>
-                <h3><strong>المهارات</strong></h3>
-                <ul>
-                    <li>C# / C++</li>
-                    <li>GdScript</li>
-                    <li>Flutter & Dart</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="projects">
-        <h2>مشاريعي البرمجية</h2>
-
-        <div class="project-category" id="projects">
-            <h3>برامج</h3>
-            <ul>
-                <li>
-                    <img src="img/my-programs/muslim.png" alt="muslim">
-                    <h4>موسوعة المسلم</h4>
-                    <h6>تطبيق إسلامي يعمل على نظام التشغيل ويندوز سهل الإستخدام و جامع للكثير من الميزات</h6>
-                    <a href="https://m5rdev.github.io/MuslimEncyclopedia/" class="toggle-link" target="_blank"><i
-                            class="fa-solid fa-circle-down"></i></a>
-                </li>
-
-                <li>
-                    <img src="img/my-programs/Radio.png" alt="Readers">
-                    <h4>أدة تحميل القراء</h4>
-                    <h6>أدة لتحميل مجموعة من القراء أدة مدمجة مع تطبيق موسوعة المسلم و يمكن تحميلها بمفردها</h6>
-                    <a href="https://drive.usercontent.google.com/download?id=1EweoMp-fCEIGjMATIRmRfQDrJuvDLkB1&export=download&authuser=0&confirm=t&uuid=799940cf-5b96-4964-ab03-f2a498696ebc&at=APvzH3pqvO-PCmbQ07KCCpMXKSWr%3A1735507851879" class="toggle-link" target="_blank"><i
-                            class="fa-solid fa-circle-down"></i></a>
-                </li>
-
-                <li>
-                    <img src="img/my-programs/Sib7a.png" alt="Counter">
-                    <h4>مسبحة الكترونية</h4>
-                    <h6>تطبيق للأندرويد لمساعدتك في عدد رقم الأذكار والتسابيح</h6>
-                    <a href="https://www.mediafire.com/file/k8qruo8k8zdp8p9/Sleep_Calculator.exe/file" class="toggle-link" target="_blank"><i
-                        class="fa-solid fa-circle-down"></i></a>
-                </li>
-                
-                <li>
-                    <img src="img/my-programs/sleepcalc.png" alt="SleepCalculator">
-                    <h4>حاسبة النوم</h4>
-                    <h6>تطبيق للكمبيوتر لمساعدتك في تحديد مواعيد الاستيقاظ بناء علي دورات النوم <br> [تطبيق قديم واجهه المستخدمه قديمة]</h6>
-                    <a href="https://www.mediafire.com/file/k8qruo8k8zdp8p9/Sleep_Calculator.exe/file" class="toggle-link" target="_blank"><i
-                        class="fa-solid fa-circle-down"></i></a>
-                </li>
-                
-                <li>
-                    <img src="img/my-programs/TranslateText.png" alt="TranslateText">
-                    <h4>مترجم نصوص</h4>
-                    <h6>تطبيق للكمبيوتر ترجمة لغات متعدد خفيف و يتعرف علي اللغات تلقائي اذا لم تحدد لغة <br> [ترجمة باستخدام Api مجاني]</h6>
-                    <a href="https://www.mediafire.com/file/fq6hpdnrf9scnlb/TranslateText.exe/file" class="toggle-link" target="_blank"><i
-                        class="fa-solid fa-circle-down"></i></a>
-                </li>
-
-                <li>
-                    <img src="img/source-code/calculator.png" alt="calc">
-                    <h4>آلة حاسبة للاندرويد</h4>
-                    <h6>تطبيق آلة حاسبة بسيطة للأندرويد بلغة فلتر [بمساعدة Ai - Chat Gpt]</h6>
-                    <a href="https://www.mediafire.com/file/f7tk2t1muxltdws/%255BFlutter%255DCalcutator.apk/file" class="toggle-link" target="_blank"><i
-                        class="fa-solid fa-circle-down"></i></a>
-                </li>
-            </ul>
-        </div>
-
-        <div class="project-category" id="games">
-            <h3>ألعاب</h3>
-            <ul>
-                <li>
-                    <img src="img/my-games/Flipy Robot.png" alt="Error">
-                    <h4>Flipy Robot</h4>
-                    <h6>أول لعبة ليا من محرك جودوت بس كدا 😂😂</h6>
-                    <a href="https://m5rdev.itch.io/flipy-robot" class="toggle-link" target="_blank"><i
-                        class="fa-solid fa-circle-down"></i></a>
-                </li>
-                
-                <li>
-                    <img src="img/my-games/rock paper scissors .png" alt="Error">
-                    <h4>ورقه حجر مقص</h4>
-                    <h6>لعبة تجريبة بدون محاكي [ويندوز فورم بلغة سي شارب]</h6>
-                    <a href="https://m5rdev.itch.io/rock-paper-scissors" class="toggle-link" target="_blank"><i
-                        class="fa-solid fa-circle-down"></i></a>
-                </li>
-
-                <li>
-                    <img src="img/my-games/luminaze-demo.png" alt="Error">
-                    <h4>luminaze-demo</h4>
-                    <h6>لعبة تحاول فيها الا تقع في اي فخ حتى تصل الى نقطة النهاية (لعبة صعبه)</h6>
-                    <a href="https://m5rdev.itch.io/luminaze-demo" class="toggle-link" target="_blank"><i
-                        class="fa-solid fa-circle-down"></i></a>
-                </li>
-            </ul>
-        </div>
-
-        <div class="project-category" id="source-code">
-            <h3>سورس كود</h3>
-            <ul>
-                <li>
-                    <img src="img/source-code/calculator.png" alt="calc">
-                    <h4>آلة حاسبة</h4>
-                    <h6>سورس كود لآلة حاسبة بسيطة بلغة السي شارب C#</h6>
-                    <a href="https://www.mediafire.com/file/od2fldnwsxmlsn8/Calculator.rar/file" class="toggle-link" target="_blank"><i
-                        class="fa-solid fa-circle-down"></i></a>
-                </li>
-                
-                <li>
-                    <img src="img/my-games/rock paper scissors .png" alt="Error">
-                    <h4>ورقه حجر مقص</h4>
-                    <h6>سورس كود لعبة حجرة ورقة مقص [ويندوز فورم بلغة سي شارب]</h6>
-                    <a href="https://www.mediafire.com/file/bupecbz58hssywy/Rock_Game.rar/file" class="toggle-link" target="_blank"><i
-                        class="fa-solid fa-circle-down"></i></a>
-                </li>
-                
-                <li>
-                    <img src="img/my-programs/muslim.png" alt="Error">
-                    <h4>موقع موسوعة المسلم</h4>
-                    <h6>سورس كود موقع موسوعة المسلم [موقع مفتوح المصدر تم التعديل عليه بعض التعديلات]</h6>
-                    <a href="https://www.mediafire.com/file/qzucwc0mh91lu0i/MuslimEncyclopedia-main.zip/file" class="toggle-link" target="_blank"><i
-                        class="fa-solid fa-circle-down"></i></a>
-                </li>
-
-                <li>
-                    <img src="img/my-programs/TranslateText.png" alt="TranslateText">
-                    <h4>مترجم نصوص</h4>
-                    <h6>سورس كود لتطبيق ترجمة لغات متعدد للكمبيوتر بلغة سي شارب دوت نت ويندوز فورم<br> [ترجمة باستخدام Api مجاني]</h6>
-                    <a href="https://www.mediafire.com/file/7klavtsdx52yagt/TranslateText.rar/file" class="toggle-link" target="_blank"><i
-                        class="fa-solid fa-circle-down"></i></a>
-                </li>
-
-                <li>
-                    <img src="img/source-code/calculator.png" alt="calc">
-                    <h4>آلة حاسبة للاندرويد</h4>
-                    <h6>سورس كود تطبيق آلة حاسبة بسيطة للأندرويد بلغة فلتر [بمساعدة Ai - Chat Gpt]</h6>
-                    <a href="https://www.mediafire.com/file/dca0vobk6lqgyra/Flutter+calculator.rar/file" class="toggle-link" target="_blank"><i
-                        class="fa-solid fa-circle-down"></i></a>
-                </li>
-
-                <li>
-                    <img src="img/source-code/programming_icon.png" alt="calc">
-                    <h4>محرر أكواد أونلاين</h4>
-                    <h6>سورس كود موقع محرر أكواد أونلاين لمعاينة أكواد html,css,js [الموقع بالكامل بمساعدة Ai - Chat Gpt و Claude ai]</h6>
-                    <a href="https://www.mediafire.com/file/gpnv19ebkzurr0z/Html-Code-viewer.zip/file" class="toggle-link" target="_blank"><i
-                        class="fa-solid fa-circle-down"></i></a>
-                </li>
-
-                <li>
-                    <img src="img/my-programs/Sib7a.png" alt="Counter">
-                    <h4>مسبحة الكترونية أونلاين</h4>
-                    <h6>سورس كود موقع مسبحة أونلاين html,css,js [الموقع بالكامل بمساعدة Ai - Chat Gpt و Claude ai]</h6>
-                    <a href="https://www.mediafire.com/file/5lme3bqw4y130n4/%25D9%2585%25D8%25B3%25D8%25A8%25D8%25AD%25D8%25A9_%25D8%25A5%25D9%2584%25D9%2583%25D8%25AA%25D8%25B1%25D9%2588%25D9%2586%25D9%258A%25D8%25A9_%25D8%25A3%25D9%2588%25D9%2586%25D9%2584%25D8%25A7%25D9%258A%25D9%2586.zip/file" class="toggle-link" target="_blank"><i
-                        class="fa-solid fa-circle-down"></i></a>
-                </li>
-                
-            </ul>
-        </div>
-    </div>
-
-    <footer>
-        <p>&copy;2024 M5RDEV</p>
-    </footer>
-
-    <div class="float-icon" onclick="togglePopupMessage()">
-        <i class="fas fa-person-praying"></i>
-    </div>
-
-    <div class="popup-message" id="popupMessage">
-        اللهم أنصر أخواننا المسلمين المستضعفين في فلسطين و السودان وسوريا وكل مكان يارب العالمين
-    </div>
-</body>
-
-</html>
