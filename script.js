@@ -156,7 +156,7 @@ const projectsData = {
             title: "MuslimEncyclopedia-online",
             description: "موقع موسوعة المسلم الإلكترونية - نسخة الويب",
             image: "img/my-programs/muslim.png",
-            url: "https://m5rdev.github.io/MuslimEncyclopedia/",
+            url: "https://m5rdev.github.io/MuslimEncyclopedia-online/",
             keywords: "موقع إسلامي موسوعة المسلم ويب قرآن أذكار",
         },
         {
