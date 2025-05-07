@@ -1,8 +1,6 @@
 /* ===== الأساسيات والأنماط العامة ===== */
-/* استيراد خط عربي من Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap');
 
-/* تعريف المتغيرات CSS */
 :root {
     /* الألوان الأساسية للوضع المظلم */
     --primary: #08AEEA;
@@ -12,6 +10,7 @@
     --dark-text: #E0E1DD;
     --dark-card: rgba(255, 255, 255, 0.05);
     --dark-border: rgba(255, 255, 255, 0.1);
+    --modal-back-color: rgba(0, 0, 0, 0.5);
 
     /* الألوان الأساسية للوضع الفاتح */
     --light-bg: rgb(241, 241, 241);
@@ -333,12 +332,6 @@ body.light-mode .search-input {
     align-items: stretch;
 }
 
-@media (min-width: 992px) {
-    .container {
-        grid-template-columns: 1fr 2fr;
-    }
-}
-
 /* قسم الملف الشخصي */
 .avatar-container {
     text-align: center;
@@ -372,13 +365,6 @@ body.light-mode .search-input {
     transition: var(--transition);
 }
 
-@media (min-width: 768px) {
-    .avatar {
-        width: 150px;
-        height: 150px;
-    }
-}
-
 .avatar img {
     width: 100%;
     height: 100%;
@@ -400,15 +386,37 @@ body.light-mode .search-input {
 
 .avatar-container p {
     color: var(--text-color);
-    margin-bottom: 1rem; /* تم تعديله من 15rem إلى 1rem */
+    margin-bottom: 1rem;
     font-size: clamp(1rem, 2vw, 1.1rem);
     letter-spacing: 3.5px;
+}
+
+.typing-cursor {
+    font-weight: bold;
+    color: var(--secondary);
+    animation: blink 0.7s infinite, pulse 1s infinite;
+}
+
+/* أنماط تأثير الكتابة */
+.typing-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+    height: 40px;
+}
+
+.typing-text {
+    font-size: clamp(1rem, 2vw, 1.1rem);
+    color: var(--text-color);
+    letter-spacing: 3.5px;
+    margin: 0;
 }
 
 .social-links-avatar {
     display: flex;
     gap: 0.6rem;
-    margin-top: auto; /* لإبقاء الروابط في الأسفل */
+    margin-top: auto;
 }
 
 .social-links-avatar a {
@@ -457,12 +465,6 @@ body.light-mode .social-links-avatar a {
     display: grid;
     grid-template-columns: 1fr;
     gap: 1.5rem;
-}
-
-@media (min-width: 768px) {
-    .certifications-content {
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    }
 }
 
 .certifications-container:hover {
@@ -549,7 +551,7 @@ body.light-mode .skills-list li:hover {
 }
 
 .category-title {
-    margin-bottom: 1.5rem;
+    margin-bottom: 2.5rem;
     font-size: clamp(1.3rem, 3vw, 1.8rem);
     position: relative;
     color: var(--text-color);
@@ -570,18 +572,6 @@ body.light-mode .skills-list li:hover {
     grid-template-columns: 1fr;
     gap: 1.5rem;
     list-style: none;
-}
-
-@media (min-width: 576px) {
-    .projects-grid {
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    }
-}
-
-@media (min-width: 768px) {
-    .projects-grid {
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    }
 }
 
 .project-card {
@@ -610,11 +600,7 @@ body.light-mode .skills-list li:hover {
     border: 3px solid var(--primary);
     transition: var(--transition);
     box-shadow: var(--shadow);
-}
-
-.project-image:hover img{
-    transform: scale(1.1);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    margin-bottom: 1.1rem;
 }
 
 .project-card {
@@ -626,7 +612,7 @@ body.light-mode .skills-list li:hover {
 }
 
 .project-title {
-    margin-top: 1rem;
+    margin-bottom: 0.5rem;
     padding: 0;
 }
 
@@ -643,29 +629,8 @@ body.light-mode .skills-list li:hover {
     transform: scale(1.3);
 }
 
-@media (max-width: 768px) {
-    .project-image {
-        width: 120px;
-        height: 120px;
-    }
-}
-
-@media (min-width: 768px) {
-    .project-image {
-        height: 200px;
-    }
-}
-
 .light-mode .project-link {
     color: black;
-}
-
-@media (min-width: 768px) {
-    .project-link {
-        font-size: 1.5rem;
-        width: 40px;
-        height: 40px;
-    }
 }
 
 .project-link:hover {
@@ -679,11 +644,8 @@ body.light-mode .skills-list li:hover {
 
 /* الفوتر */
 footer {
-    background-color: rgb(17, 35, 54);
-    padding: 1.5rem;
+    padding: 1.1rem;
     text-align: center;
-    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(10px);
 }
 
 body.light-mode footer {
@@ -762,22 +724,29 @@ body.light-mode footer {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: var(--modal-back-color);
     transition: var(--transition);
+    backdrop-filter: blur(7px);
 }
 
 .modal-content {
     background-color: var(--card-bg);
-    margin: 5% auto;
-    padding: 20px;
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 25px;
     border-radius: 15px;
     width: 90%;
     max-width: 800px;
-    box-shadow: var(--shadow);
-    position: relative;
-    animation: slideInUp 0.5s;
-    backdrop-filter: blur(10px);
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+    animation: modalFadeIn 0.4s ease-out;
     border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
 }
 
 .light-mode .modal-content {
@@ -785,27 +754,29 @@ body.light-mode footer {
     border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
-.light-mode .modal-content h3, .light-mode .modal-content p{
+.light-mode .modal-content h3,
+.light-mode .modal-content p {
     color: white;
 }
 
 .close-modal {
     color: var(--text-color);
     position: absolute;
-    top: 10px;
+    top: 0px;
     right: 20px;
-    font-size: 28px;
+    font-size: 40px;
     font-weight: bold;
     cursor: pointer;
     transition: var(--transition);
 }
 
-.light-mode .close-modal{
+.light-mode .close-modal {
     color: #fff;
 }
 
 .close-modal:hover {
     color: var(--accent);
+    transform: scale(0.9);
 }
 
 .modal-image {
@@ -816,12 +787,6 @@ body.light-mode footer {
     border-radius: 10px;
 }
 
-@media (min-width: 768px) {
-    .modal-image {
-        max-height: 400px;
-    }
-}
-
 .modal-title {
     margin-bottom: 10px;
     font-size: clamp(1.3rem, 3vw, 1.8rem);
@@ -829,7 +794,7 @@ body.light-mode footer {
 }
 
 .modal-description {
-    margin-bottom: 20px;
+    margin-bottom: 0px;
     line-height: 1.6;
     color: var(--text-color);
     font-size: clamp(0.9rem, 2vw, 1rem);
@@ -843,13 +808,13 @@ body.light-mode footer {
 
 /* أزرار النافذة المنبثقة */
 .modal-btn {
-    padding: 10px 20px;
+    padding: 10px;
     border: none;
     border-radius: 8px;
     cursor: pointer;
     transition: var(--transition);
     font-weight: bold;
-    font-size: 0.9rem;
+    font-size: 25px;
     background: linear-gradient(135deg, var(--primary), var(--dark-bg-secondary));
     color: white;
 }
@@ -866,16 +831,12 @@ body.light-mode .nav-link:hover {
     color: white;
 }
 
-@media (min-width: 768px) {
-    .modal-btn {
-        padding: 10px 20px;
-        font-size: 1rem;
-    }
-}
-
 .download-btn {
     color: white;
     text-decoration: none;
+    font-weight: bold;
+    font-size: 16px !important;
+    padding: 8px 15px !important;
 }
 
 .download-btn:hover {
@@ -922,6 +883,7 @@ body.light-mode .nav-link:hover {
     from {
         width: 0;
     }
+
     to {
         width: 100%;
     }
@@ -931,8 +893,21 @@ body.light-mode .nav-link:hover {
     from {
         opacity: 0;
     }
+
     to {
         opacity: 1;
+    }
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -40%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
     }
 }
 
@@ -941,6 +916,7 @@ body.light-mode .nav-link:hover {
         transform: translateY(50px);
         opacity: 0;
     }
+
     to {
         transform: translateY(0);
         opacity: 1;
@@ -951,9 +927,11 @@ body.light-mode .nav-link:hover {
     0% {
         transform: scale(1);
     }
+
     50% {
         transform: scale(1.05);
     }
+
     100% {
         transform: scale(1);
     }
@@ -963,6 +941,7 @@ body.light-mode .nav-link:hover {
     from {
         transform: rotate(0deg);
     }
+
     to {
         transform: rotate(360deg);
     }
@@ -973,16 +952,192 @@ body.light-mode .nav-link:hover {
         bottom: -100px;
         opacity: 0.3;
     }
+
     100% {
         bottom: 100vh;
         opacity: 0;
     }
 }
 
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .project-image {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+@media (max-width: 992px) {
+    .container {
+        max-width: 90%;
+        margin: 1.5rem auto;
+    }
+}
+
+/* هواتف صغيرة (أقل من 576px) */
+@media (max-width: 576px) {
+
+    /* تعديل الهيدر */
+    header {
+        flex-direction: row;
+        padding: 0.5rem;
+    }
+
+    .header-content {
+        width: 100%;
+        margin-top: 0.5rem;
+    }
+
+    .pulse{
+        font-size: 20px;
+        text-decoration: none;
+    }
+
+    /* تعديل مربع البحث */
+    .search-container {
+        visibility: hidden;
+    }
+
+    /* تعديل الصفحة الرئيسية */
+    .container {
+        grid-template-columns: 1fr;
+        max-width: 95%;
+    }
+
+    /* تعديل الصورة الشخصية */
+    .avatar {
+        width: 100px;
+        height: 100px;
+    }
+
+    .avatar-container p {
+        letter-spacing: normal;
+        margin-bottom: 0.5rem;
+    }
+
+    /* تعديل المشاريع */
+    .projects {
+        max-width: 95%;
+    }
+
+    .project-card {
+        padding: 1rem 0.5rem;
+    }
+
+    .project-image {
+        width: 80px;
+        height: 80px;
+    }
+
+    /* تعديل الأزرار العائمة */
+    .float-btn,
+    .back-to-top {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    .popup-message {
+        max-width: 85%;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 0.8rem;
+    }
+}
+
 /* ===== التجاوب مع الشاشات الصغيرة ===== */
+@media (min-width: 992px) {
+    .container {
+        grid-template-columns: 1fr 2fr;
+    }
+}
+
+@media (min-width: 576px) {
+    .projects-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+}
+
+@media (min-width: 768px) {
+    .projects-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+}
+
+@media (min-width: 768px) {
+    .certifications-content {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+}
+
+@media (min-width: 768px) {
+    .project-image {
+        height: 200px;
+    }
+}
+
+@media (min-width: 768px) {
+    .project-link {
+        font-size: 1.5rem;
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* هواتف متوسطة (من 576px إلى 768px) */
+@media (min-width: 576px) and (max-width: 768px) {
+
+    /* تعديل الصفحة الرئيسية */
+    .container {
+        grid-template-columns: 1fr;
+    }
+
+    /* تعديل المشاريع */
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* تعديل الصورة الشخصية */
+    .avatar {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+/* أجهزة لوحية (من 768px إلى 992px) */
+@media (min-width: 768px) and (max-width: 992px) {
+
+    /* تعديل الصفحة الرئيسية */
+    .container {
+        grid-template-columns: 1fr 1.5fr;
+    }
+
+    /* تعديل المشاريع */
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* تحسينات خاصة للقائمة المنسدلة على الهواتف */
 @media (max-width: 768px) {
     .mobile-menu-btn {
         display: block;
+        background: none;
+        border: none;
+        color: var(--text-color);
+        font-size: 1.5rem;
+        cursor: pointer;
     }
 
     .nav-menu {
@@ -1007,6 +1162,8 @@ body.light-mode .nav-link:hover {
     .nav-link {
         padding: 0.8rem;
         border-bottom: 1px solid var(--border-color);
+        width: 100%;
+        text-align: center;
     }
 
     .nav-link:last-child {
@@ -1024,21 +1181,654 @@ body.light-mode .nav-link:hover {
     }
 }
 
-@media (max-width: 576px) {
-    .float-btn,
-    .back-to-top {
-        width: 40px;
-        height: 40px;
+/* تحسينات للوضع الأفقي على الهواتف */
+@media (max-height: 500px) and (orientation: landscape) {
+    .loading-screen {
+        flex-direction: row;
+        gap: 2rem;
+    }
+
+    .logo {
+        margin-bottom: 0;
+    }
+
+    .loader-container {
+        width: 60%;
+        margin: 0.5rem auto;
+    }
+
+    .avatar-container {
+        flex-direction: row;
+        text-align: left;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .avatar {
+        margin: 0;
+        width: 80px;
+        height: 80px;
+    }
+
+    .social-links-avatar {
+        margin-top: 0;
+        margin-left: auto;
+    }
+}
+
+/* تحسينات للشاشات الصغيرة جدًا (أقل من 400px) */
+@media (max-width: 400px) {
+
+    /* تصغير حجم الخطوط */
+    :root {
+        font-size: 14px;
+    }
+
+    /* تعديل العناوين */
+    header h1 {
+        font-size: 1.3rem;
+    }
+
+    .section-title {
+        font-size: 1.3rem;
+    }
+
+    /* تعديل المهارات */
+    .skills-list li {
+        padding: 0.3rem;
+        font-size: 0.9rem;
+    }
+
+    /* تعديل الأزرار الاجتماعية */
+    .social-links-avatar a {
+        width: 35px;
+        height: 35px;
         font-size: 1rem;
     }
+}
 
-    .popup-message {
-        max-width: 250px;
-        font-size: 0.8rem;
+/* تحسينات خاصة للوضع الفاتح على الشاشات الصغيرة */
+@media (max-width: 768px) {
+    body.light-mode .nav-menu {
+        background-color: var(--light-bg-secondary);
     }
 
+    body.light-mode .nav-link {
+        border-bottom-color: var(--light-border);
+    }
+}
+
+@media (min-width: 768px) {
+    .modal-btn {
+        padding: 20px;
+        font-size: 0.7rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .modal-image {
+        max-height: 400px;
+    }
+}
+
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%;
+        padding: 20px;
+    }
+
+    .modal-image {
+        max-height: 200px;
+    }
+}
+
+@media (max-width: 576px) {
+    .modal-content {
+        width: 98%;
+        padding: 15px;
+    }
+
+    .modal-actions {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .modal-btn {
+        width: 100%;
+    }
+}
+
+/* ===== تحسينات الهواتف الصغيرة (أقل من 576px) ===== */
+@media (max-width: 576px) {
+    /* تعديل الهيدر */
+    header {
+        padding: 0.8rem 0.5rem;
+        flex-wrap: wrap;
+    }
+    
+    header h1 {
+        font-size: 1.3rem;
+        white-space: nowrap;
+    }
+    
+    /* تحسين مربع البحث */
+    .search-container {
+        order: 3;
+        width: 100%;
+        margin: 0.5rem 0 0;
+    }
+    
+    .search-input {
+        width: 100% !important;
+    }
+    
+    /* تحسين الصفحة الرئيسية */
+    .container {
+        max-width: 98%;
+        margin: 1rem auto;
+        padding: 0 0.5rem;
+    }
+    
+    /* تحسين الصورة الشخصية */
+    .avatar {
+        width: 90px;
+        height: 90px;
+        margin-bottom: 1rem;
+    }
+    
+    .avatar-container {
+        padding: 1rem 0.5rem;
+    }
+    
+    .avatar-container h2 {
+        font-size: 1.3rem;
+    }
+    
+    .avatar-container p {
+        letter-spacing: normal;
+        font-size: 0.9rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .typing-text {
+        font-size: 0.9rem;
+        letter-spacing: 1px;
+    }
+    
+    .social-links-avatar a {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+    }
+    
+    /* تحسين قسم المهارات */
+    .skills-list li {
+        padding: 0.5rem;
+        font-size: 0.85rem;
+    }
+    
+    /* تحسين المشاريع */
+    .projects {
+        max-width: 98%;
+        padding: 0 0.5rem;
+    }
+    
+    .project-card {
+        padding: 1rem 0.5rem;
+    }
+    
+    .project-image {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .project-title {
+        font-size: 1rem;
+    }
+    
+    .project-description {
+        font-size: 0.85rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    /* تحسين الأزرار العائمة */
+    .float-btn, .back-to-top {
+        width: 42px;
+        height: 42px;
+        font-size: 1.1rem;
+    }
+    
+    .popup-message {
+        max-width: 90%;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 0.8rem;
+        padding: 10px;
+        bottom: 70px;
+    }
+    
+    /* تحسين النوافذ المنبثقة */
     .modal-content {
         width: 95%;
         padding: 15px;
+    }
+    
+    .modal-title {
+        font-size: 1.3rem;
+    }
+    
+    .modal-description {
+        font-size: 0.85rem;
+    }
+    
+    .modal-actions {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .modal-btn {
+        width: 100%;
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+    
+    /* تحسين القائمة المنسدلة */
+    .nav-menu {
+        top: 60px;
+    }
+    
+    .nav-link {
+        padding: 0.7rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* ===== تحسينات للهواتف الأفقية ===== */
+@media (max-height: 500px) and (orientation: landscape) {
+    .loading-screen {
+        flex-direction: row;
+        gap: 1.5rem;
+    }
+    
+    .logo {
+        margin-bottom: 0;
+        font-size: 1.8rem;
+    }
+    
+    .loader-container {
+        width: 60%;
+        margin: 0;
+    }
+    
+    .tagline, .status {
+        display: none;
+    }
+    
+    .avatar-container {
+        flex-direction: row;
+        text-align: left;
+        align-items: center;
+        gap: 1rem;
+        padding: 0.8rem;
+    }
+    
+    .avatar {
+        margin: 0;
+        width: 70px;
+        height: 70px;
+    }
+    
+    .avatar-container h2 {
+        font-size: 1.2rem;
+    }
+    
+    .social-links-avatar {
+        margin-top: 0;
+        margin-left: auto;
+        gap: 0.4rem;
+    }
+    
+    .social-links-avatar a {
+        width: 32px;
+        height: 32px;
+        font-size: 0.9rem;
+    }
+    
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .project-card {
+        padding: 0.8rem;
+    }
+}
+
+/* ===== تحسينات للهواتف المتوسطة (576px - 768px) ===== */
+@media (min-width: 576px) and (max-width: 768px) {
+    .container {
+        max-width: 95%;
+    }
+    
+    .avatar {
+        width: 110px;
+        height: 110px;
+    }
+    
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .project-image {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .project-title {
+        font-size: 1.1rem;
+    }
+}
+
+/* ===== تحسينات عامة للهواتف ===== */
+@media (max-width: 768px) {
+    /* تحسينات القائمة المنسدلة */
+    .mobile-menu-btn {
+        display: block;
+        background: none;
+        border: none;
+        color: var(--text-color);
+        font-size: 1.5rem;
+        cursor: pointer;
+        padding: 0.3rem;
+    }
+    
+    .nav-menu {
+        display: none;
+        position: fixed;
+        top: 70px;
+        right: 0;
+        width: 100%;
+        background-color: var(--bg-secondary);
+        flex-direction: column;
+        padding: 0.5rem;
+        box-shadow: var(--shadow);
+        z-index: 999;
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--border-color);
+    }
+    
+    .nav-menu.active {
+        display: flex;
+    }
+    
+    .nav-link {
+        padding: 0.8rem;
+        border-bottom: 1px solid var(--border-color);
+        width: 100%;
+        text-align: center;
+        font-size: 0.95rem;
+    }
+    
+    .nav-link:last-child {
+        border-bottom: none;
+    }
+    
+    /* تحسينات الوضع الفاتح للقائمة */
+    body.light-mode .nav-menu {
+        background-color: var(--light-bg-secondary);
+    }
+    
+    body.light-mode .nav-link {
+        border-bottom-color: var(--light-border);
+    }
+    
+    /* تحسينات النوافذ المنبثقة */
+    .modal-image {
+        max-height: 200px;
+    }
+}
+/* ===== تحسينات الهيدر للشاشات الصغيرة جدًا (أقل من 400px) ===== */
+@media (max-width: 400px) {
+    /* تحسينات الهيدر */
+    header {
+        padding: 0.2rem;
+        flex-wrap: nowrap; /* منع الانتقال لسطر جديد */
+        overflow: hidden; /* إخفاء ما يتجاوز العرض */
+    }
+    
+    .header-content {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        width: 100%;
+    }
+    
+    header h1 {
+        font-size: 1rem;
+        white-space: nowrap;
+        margin-right: auto; /* لدفع العناصر الأخرى للجانب */
+    }
+    
+    .mobile-menu-btn {
+        font-size: 1.2rem;
+        padding: 0.2rem;
+        order: 2; /* وضع زر القائمة قبل زر الوضع */
+    }
+    
+    .toggle-btn {
+        font-size: 1.1rem;
+        width: 32px;
+        height: 32px;
+        margin-right: 90px;
+    }
+    
+    .search-container {
+        display: none; /* إخفاء مربع البحث تمامًا */
+    }
+    
+    /* تحسينات العناصر الأساسية */
+    .container {
+        padding: 0 0.3rem;
+    }
+    
+    .avatar-container, 
+    .certifications-container {
+        padding: 0.8rem 0.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .avatar {
+        width: 70px;
+        height: 70px;
+        margin-bottom: 0.8rem;
+    }
+    
+    .avatar-container h2 {
+        font-size: 1rem;
+    }
+    
+    .avatar-container p {
+        font-size: 0.75rem;
+        margin-bottom: 0.6rem;
+    }
+    
+    .typing-text {
+        font-size: 0.7rem;
+    }
+    
+    .social-links-avatar {
+        gap: 0.3rem;
+    }
+    
+    .social-links-avatar a {
+        width: 30px;
+        height: 30px;
+        font-size: 0.9rem;
+    }
+    
+    /* تحسينات قسم المهارات */
+    .section-title {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .skills-list li {
+        padding: 0.3rem 0.5rem;
+        font-size: 0.7rem;
+    }
+    
+    /* تحسينات المشاريع */
+    .projects {
+        padding: 0 0.3rem;
+    }
+    
+    .project-card {
+        padding: 0.8rem 0.3rem;
+    }
+    
+    .project-image {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .project-title {
+        font-size: 0.85rem;
+        margin-top: 0.5rem;
+    }
+    
+    .project-description {
+        font-size: 0.7rem;
+        margin-bottom: 1rem;
+    }
+    
+    .project-link {
+        font-size: 1rem;
+    }
+    
+    /* محاذاة العناصر في المنتصف أفقيًا */
+    .avatar-container,
+    .certifications-container,
+    .projects {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 98%;
+    }
+    
+    /* تحسينات الفوتر */
+    footer {
+        padding: 1rem 0.5rem;
+    }
+    
+    .footer-text {
+        font-size: 0.7rem;
+    }
+}
+
+/* ===== تحسينات إضافية للشاشات الصغيرة (أقل من 350px) ===== */
+@media (max-width: 350px) {
+    header h1 {
+        font-size: 0.9rem;
+    }
+    
+    .mobile-menu-btn {
+        font-size: 1.1rem;
+    }
+    
+    .toggle-btn {
+        font-size: 1rem;
+        width: 28px;
+        height: 28px;
+    }
+    
+    .avatar {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .project-image {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+/* ===== تحسينات الهيدر للشاشات الصغيرة ===== */
+@media (max-width: 768px) {
+    header {
+        padding: 0.5rem 1rem;
+    }
+    
+    .header-content {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+    
+    /* تعديل موقع زر الوضع المظلم */
+    .toggle-btn {
+        order: 1; /* وضع في البداية (اليسار) */
+        margin-right: auto; /* يدفع العناصر الأخرى لليمين */
+    }
+    
+    /* تعديل موقع زر القائمة */
+    .mobile-menu-btn {
+        order: 3; /* وضع في النهاية (اليمين) */
+        margin-left: auto; /* يدفع العناصر الأخرى لليسار */
+    }
+    
+    /* إخفاء مربع البحث في الشاشات الصغيرة */
+    .search-container {
+        display: none;
+    }
+    
+    /* تعديل عنوان الموقع */
+    header h1 {
+        order: 2; /* وضع في المنتصف */
+        margin: 0 auto; /* توسيط بين الزرين */
+        font-size: 1.2rem;
+        padding: 0 0.5rem;
+    }
+}
+
+/* ===== توحيد عرض العناصر الرئيسية ===== */
+@media (max-width: 576px) {
+    .avatar-container,
+    .certifications-container,
+    .projects {
+        width: calc(100% - 1rem); /* نفس عرض العنصر التعريفي */
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    /* تحسينات إضافية للشاشات الصغيرة جداً */
+    @media (max-width: 400px) {
+        header h1 {
+            font-size: 1rem;
+            padding: 0 0.3rem;
+        }
+        
+        .toggle-btn {
+            font-size: 1.1rem;
+            width: 32px;
+            height: 32px;
+        }
+        
+        .mobile-menu-btn {
+            font-size: 1.3rem;
+        }
+    }
+}
+
+/* ===== تحسينات القائمة المنسدلة ===== */
+@media (max-width: 768px) {
+    .nav-menu {
+        top: 60px;
+        right: 0;
+        left: 0;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .nav-link {
+        padding: 0.8rem;
     }
 }

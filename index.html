@@ -43,12 +43,13 @@
             <div class="nav-menu" id="navMenu">
                 <a href="#projects" class="nav-link">البرامج</a>
                 <a href="#games" class="nav-link">الألعاب</a>
+                <a href="#websites" class="nav-link">مواقعي بمساعدة ai</a>
                 <a href="#source-code" class="nav-link">السورس كود</a>
             </div>
         </div>
-        
+
         <h1 class="pulse">M5R DEV</h1>
-        
+
         <div class="header-content">
             <div class="search-container">
                 <input type="text" id="searchInput" placeholder="ابحث هنا..." class="search-input">
@@ -68,7 +69,10 @@
                 <img id="profile-image" src="img/avatar.png" alt="Profile" class="pulse">
             </div>
             <h2>Mahmoud Rady</h2>
-            <p>I'm Programmer & Developer</p>
+            <div class="typing-container">
+                <span class="typing-cursor">|</span>
+                <p id="typing-text" class="typing-text"></p>
+            </div>
             <div class="social-links-avatar animate_animated animate_fadeIn">
                 <a href="https://www.facebook.com/M5RDEV.Facebook" target="_blank" aria-label="Facebook">
                     <i class="fab fa-facebook"></i>
@@ -130,6 +134,12 @@
         <div class="project-category animate_animated animate_fadeIn" id="games">
             <h3 class="category-title">ألعاب</h3>
             <ul class="projects-grid" id="games-list" onclick="showProjectModal(event)"></ul>
+        </div>
+
+        <!-- مشاريع المواقع -->
+        <div class="project-category animate_animated animate_fadeIn" id="websites">
+            <h3 class="category-title">مواقعي ai</h3>
+            <ul class="projects-grid" id="websites-list" onclick="showProjectModal(event)"></ul>
         </div>
 
         <!-- مشاريع السورس كود -->

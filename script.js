@@ -1,3 +1,80 @@
+// تأثير الكتابة التلقائية
+function typeWriter() {
+    const texts = [
+        "I'm an Electronic Engineer",
+        "I'm a Programmer & Developer",
+        "I'm a Video Editor",
+        "I'm a Creative Designer"
+    ];
+
+    const typingText = document.getElementById('typing-text');
+    const cursor = document.querySelector('.typing-cursor');
+
+    // إعداد القيم الأولية
+    let textIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let isPaused = false;
+
+    // ضبط السرعات
+    const typingSpeed = 100;
+    const deletingSpeed = 50;
+    const pauseBetweenTexts = 2000;
+    const pauseBeforeStart = 1000;
+
+    function type() {
+        // إذا كان المؤشر مخفيًا (أثناء الإنتظار بين النصوص)
+        if (isPaused) {
+            cursor.style.visibility = 'hidden';
+            return;
+        }
+
+        cursor.style.visibility = 'visible';
+        const currentText = texts[textIndex];
+
+        if (isDeleting) {
+            // حالة المسح
+            typingText.textContent = currentText.substring(0, charIndex - 1);
+            charIndex--;
+        } else {
+            // حالة الكتابة
+            typingText.textContent = currentText.substring(0, charIndex + 1);
+            charIndex++;
+        }
+
+        if (!isDeleting && charIndex === currentText.length) {
+            // نهاية الكتابة، انتظر ثم ابدأ المسح
+            isDeleting = true;
+            isPaused = true;
+            setTimeout(() => {
+                isPaused = false;
+                type();
+            }, pauseBetweenTexts);
+        } else if (isDeleting && charIndex === 0) {
+            // نهاية المسح، انتقل للنص التالي
+            isDeleting = false;
+            textIndex = (textIndex + 1) % texts.length;
+            isPaused = true;
+            setTimeout(() => {
+                isPaused = false;
+                type();
+            }, 500);
+        } else {
+            // استمر في الكتابة أو المسح
+            const speed = isDeleting ? deletingSpeed : typingSpeed;
+            setTimeout(type, speed);
+        }
+    }
+
+    // بدء التأثير بعد تأخير قصير
+    setTimeout(type, pauseBeforeStart);
+}
+// استدعاء الدالة عند تحميل الصفحة
+document.addEventListener('DOMContentLoaded', () => {
+    createBubbles();
+    typeWriter(); // أضف هذا السطر
+});
+
 // بيانات المشاريع
 const projectsData = {
     programs: [
@@ -6,7 +83,7 @@ const projectsData = {
             description: "تطبيق إسلامي يعمل على نظام التشغيل ويندوز سهل الإستخدام و جامع للكثير من الميزات",
             image: "img/my-programs/muslim.png",
             url: "https://m5rdev.github.io/MuslimEncyclopedia/",
-            keywords: "برنامج إسلامي موسوعة المسلم ويندوز قرآن أذكار"
+            keywords: "برنامج إسلامي موسوعة المسلم ويندوز قرآن أذكار",
         },
         {
             title: "أداة تحميل القراء",
@@ -16,14 +93,14 @@ const projectsData = {
             keywords: "أداة تحميل قراء قرآن إسلامي"
         },
         {
-            title: "مسبحة الكترونية",
+            title: "مسبحة الكترونية 📿",
             description: "تطبيق للأندرويد لمساعدتك في عدد رقم الأذكار والتسابيح",
             image: "img/my-programs/Sib7a.png",
             url: "https://www.mediafire.com/file/jp8zvk8xpkd8rxc/%25D9%2585%25D8%25B3%25D8%25A8%25D8%25AD%25D8%25A9_%25D8%25A7%25D9%2584%25D9%2583%25D8%25AA%25D8%25B1%25D9%2588%25D9%2586%25D9%258A%25D8%25A9.apk/file",
             keywords: "مسبحة أذكار تسبيح أندرويد"
         },
         {
-            title: "حاسبة النوم",
+            title: "حاسبة مواقيت النوم",
             description: "تطبيق للكمبيوتر لمساعدتك في تحديد مواعيد الاستيقاظ بناء علي دورات النوم",
             image: "img/my-programs/sleepcalc.png",
             url: "https://www.mediafire.com/file/k8qruo8k8zdp8p9/Sleep_Calculator.exe/file",
@@ -34,14 +111,21 @@ const projectsData = {
             description: "تطبيق للكمبيوتر ترجمة لغات متعدد خفيف و يتعرف علي اللغات تلقائي اذا لم تحدد لغة",
             image: "img/my-programs/TranslateText.png",
             url: "https://www.mediafire.com/file/fq6hpdnrf9scnlb/TranslateText.exe/file",
-            keywords: "مترجم نصوص لغات ترجمة"
+            keywords: "مترجم نصوص لغات ترجمة",
         },
         {
             title: "آلة حاسبة للاندرويد",
             description: "تطبيق آلة حاسبة بسيطة للأندرويد بلغة فلتر",
             image: "img/source-code/calculator.png",
             url: "https://www.mediafire.com/file/f7tk2t1muxltdws/%255BFlutter%255DCalcutator.apk/file",
-            keywords: "آلة حاسبة اندرويد فلاتر"
+            keywords: "آلة حاسبة اندرويد فلاتر",
+        },
+        {
+            title: "تقيم الصور [ترتيب الصور]",
+            description: "تقيم او ترتيب الصور بالافضل rate pic",
+            image: "img/my-programs/pic-rate.png",
+            url: "https://www.mediafire.com/file/c361bn2kd0nooyf/Pic_Rate.rar/file",
+            keywords: "تقيم الصور و ترتيب الصور",
         }
     ],
     games: [
@@ -50,14 +134,14 @@ const projectsData = {
             description: "أول لعبة ليا من محرك جودوت",
             image: "img/my-games/Flipy Robot.png",
             url: "https://m5rdev.itch.io/flipy-robot",
-            keywords: "روبوت فليبي لعبة جودوت"
+            keywords: "روبوت فليبي لعبة جودوت",
         },
         {
             title: "ورقة حجر مقص",
             description: "لعبة تجريبة بدون محاكي [ويندوز فورم بلغة سي شارب]",
             image: "img/my-games/rock paper scissors .png",
             url: "https://m5rdev.itch.io/rock-paper-scissors",
-            keywords: "لعبة حجر ورقة مقص"
+            keywords: "لعبة حجر ورقة مقص",
         },
         {
             title: "luminaze-demo",
@@ -66,53 +150,83 @@ const projectsData = {
             url: "https://m5rdev.itch.io/luminaze-demo",
             keywords: "لعبة luminaze فخاخ"
         }
+    ],  
+    websites: [
+        {
+            title: "MuslimEncyclopedia-online",
+            description: "موقع موسوعة المسلم الإلكترونية - نسخة الويب",
+            image: "img/my-programs/muslim.png",
+            url: "https://m5rdev.github.io/MuslimEncyclopedia/",
+            keywords: "موقع إسلامي موسوعة المسلم ويب قرآن أذكار",
+        },
+        {
+            title: "ColorMate",
+            description: "أداة لاختيار وتنسيق الألوان للمصممين والمطورين",
+            image: "img/my-websites/ColorMate-code.png",
+            url: "https://m5rdev.github.io/ColorMate/",
+            keywords: "ألوان تنسيق مصمم مطور ويب"
+        },
+        {
+            title: "VoiceToText-TextToVoice",
+            description: "أداة تحويل الصوت إلى نص والنص إلى صوت مباشرة في المتصفح",
+            image: "img/my-websites/text-to-voice-code.png",
+            url: "https://m5rdev.github.io/VoiceToText-TextToVoice/",
+            keywords: "صوت نص تحويل ويب"
+        },
+        {
+            title: "Html-Code-viewer",
+            description: "محرر أكواد أونلاين لمعاينة أكواد HTML, CSS, JavaScript",
+            image: "img/my-websites/programming_icon.png",
+            url: "https://m5rdev.github.io/Html-Code-viewer/",
+            keywords: "محرر أكواد ويب html css javascript",
+        },
+        {
+            title: "مسبحة اونلاين 📿",
+            description: "مسبحة الكترونية أونلاين HTML, CSS, JavaScript",
+            image: "img/my-programs/Sib7a.png",
+            url: "https://m5rdev.github.io/ECounter/",
+            keywords: "محرر أكواد ويب html css javascript",
+        },
+        {
+            title: "المرشد السياحي العربي",
+            description: "منصة عربية شاملة تحتوي على كل المعلومات السياحية عن الدول العربية و بعض المعلومات",
+            image: "img/my-websites/tour guide.png",
+            url: "https://m5rdev.github.io/ar-tour-guide/",
+            keywords: "المرشد السياحي العربي : منصة عربية شاملة تحتوي على كل المعلومات السياحية عن الدول العربية و تحديث أسعار العملات مباشرة من مصادر موثوقة",
+        }
     ],
     sourceCode: [
         {
-            title: "سورس حاسبة النوم",
-            description: "سورس كود برنامج حاسبة النوم بلغة سي شارب",
-            image: "img/my-programs/sleepcalc.png",
-            url: "https://github.com/m5rdev/SleepCalculator",
-            keywords: "سورس كود حاسبة نوم"
+            title: "سورس Crazylogin",
+            description: "سورس كود برنامج login و register بسيطة ومسلية بلغة سي شارب بلغة سي شارب C#",
+            image: "img/source-code/crazylogin-code.png",
+            url: "https://drive.google.com/file/d/1pHAvSQ1Hqbw158_JBrGpMgGoRPH9B0Wl/view?usp=sharing",
+            keywords: "سورس كود CrazyLogin"
         },
         {
-            title: "سورس لعبة Flipy Robot",
+            title: "سورس Flipy Robot",
             description: "سورس كود لعبة Flipy Robot بلغة GDScript",
             image: "img/my-games/Flipy Robot.png",
             url: "https://github.com/m5rdev/Flipy-Robot",
             keywords: "سورس كود لعبة جودوت"
         },
         {
-            title: "آلة حاسبة",
+            title: "سورس آلة حاسبة",
             description: "سورس كود لآلة حاسبة بسيطة بلغة السي شارب C#",
             image: "img/source-code/calculator.png",
             url: "https://www.mediafire.com/file/od2fldnwsxmlsn8/Calculator.rar/file",
             keywords: "سورس كود آلة حاسبة"
         },
         {
-            title: "ورقه حجر مقص",
-            description: "سورس كود لعبة حجرة ورقة مقص [ويندوز فورم بلغة سي شارب]",
-            image: "img/my-games/rock paper scissors .png",
-            url: "https://www.mediafire.com/file/bupecbz58hssywy/Rock_Game.rar/file",
-            keywords: "سورس كود لعبة حجر ورقة مقص"
-        },
-        {
-            title: "موقع موسوعة المسلم",
-            description: "سورس كود موقع موسوعة المسلم [موقع مفتوح المصدر تم التعديل عليه بعض التعديلات]",
-            image: "img/my-programs/muslim.png",
-            url: "https://www.mediafire.com/file/qzucwc0mh91lu0i/MuslimEncyclopedia-main.zip/file",
-            keywords: "سورس كود موقع موسوعة المسلم"
-        },
-        {
-            title: "مترجم نصوص",
-            description: "سورس كود لتطبيق ترجمة لغات متعدد للكمبيوتر بلغة سي شارب دوت نت ويندوز فورم",
+            title: "سورس مترجم نصوص",
+            description: "سورس كود لتطبيق ترجمة لغات متعدد للكمبيوتر بلغة C# سي شارب دوت نت ويندوز فورم",
             image: "img/my-programs/TranslateText.png",
             url: "https://www.mediafire.com/file/7klavtsdx52yagt/TranslateText.rar/file",
             keywords: "سورس كود مترجم نصوص"
         },
         {
-            title: "آلة حاسبة للاندرويد",
-            description: "سورس كود تطبيق آلة حاسبة بسيطة للأندرويد بلغة فلتر",
+            title: "سورس آلة حاسبة للاندرويد",
+            description: "سورس كود تطبيق آلة حاسبة بسيطة للأندرويد بلغة فلتر Flutter",
             image: "img/source-code/calculator.png",
             url: "https://www.mediafire.com/file/dca0vobk6lqgyra/Flutter+calculator.rar/file",
             keywords: "سورس كود آلة حاسبة اندرويد"
@@ -120,18 +234,54 @@ const projectsData = {
         {
             title: "محرر أكواد أونلاين",
             description: "سورس كود موقع محرر أكواد أونلاين لمعاينة أكواد html,css,js",
-            image: "img/source-code/programming_icon.png",
+            image: "img/my-websites/programming_icon.png",
             url: "https://www.mediafire.com/file/gpnv19ebkzurr0z/Html-Code-viewer.zip/file",
             keywords: "سورس كود محرر أكواد"
         },
         {
-            title: "مسبحة الكترونية أونلاين",
-            description: "سورس كود موقع مسبحة أونلاين html,css,js",
+            title: "سورس المسبحة الاونلاين 📿",
+            description: "سورس كود موقع المسبحة الكترونية أونلاين HTML, CSS, JavaScript",
             image: "img/my-programs/Sib7a.png",
             url: "https://www.mediafire.com/file/5lme3bqw4y130n4/%25D9%2585%25D8%25B3%25D8%25A8%25D8%25AD%25D8%25A9_%25D8%25A5%25D9%2584%25D9%2583%25D8%25AA%25D8%25B1%25D9%2588%25D9%2586%25D9%258A%25D8%25A9_%25D8%25A3%25D9%2588%25D9%2586%25D9%2584%25D8%25A7%25D9%258A%25D9%2586.zip/file",
-            keywords: "سورس كود مسبحة الكترونية"
+            keywords: "محرر أكواد ويب html css javascript",
+        },
+        ,
+        {
+            title: "سورس المسبحة لاندرويد 📿",
+            description: "سورس كود المسبحة الكترونية لاندرويد بلغة فلتر Flutter",
+            image: "img/my-programs/Sib7a.png",
+            url: "https://drive.google.com/file/d/1ZCEH5PHUFox8IsZ-3VpXav0imMs7Rdo9/view?usp=drive_link",
+            keywords: "محرر أكواد ويب html css javascript",
+        },
+        {
+            title: "سورس تقيم الصور",
+            description: "سورس كود تقيم او ترتيب الصور بالافضل لغة C# rate pic",
+            image: "img/my-programs/pic-rate.png",
+            url: "https://www.mediafire.com/file/y765zxugz1uhd9q/RatePic+Source+code.rar/file",
+            keywords: "تقيم الصور و ترتيب الصور",
+        },
+        {
+            title: "سورس المرشد السياحي",
+            description: "منصة عربية شاملة تحتوي على كل المعلومات السياحية عن الدول العربية و بعض المعلومات",
+            image: "img/my-websites/tour guide.png",
+            url: "https://www.mediafire.com/file/w0nk1euh8kgkymj/index.html/file",
+            keywords: "المرشد السياحي العربي : منصة عربية شاملة تحتوي على كل المعلومات السياحية عن الدول العربية و تحديث أسعار العملات مباشرة من مصادر موثوقة",
+        },
+        {
+            title: "سورس الموقع الحالي M5RDEV",
+            description: "موقعي الخاص Portfolio MRDEV معلومات عني و اخر مشاريعي البرمجية",
+            image: "img/avatar.png",
+            url: "https://www.mediafire.com/file/w0nk1euh8kgkymj/index.html/file",
+            keywords: "موقعي الخاص Portfolio MRDEV معلومات عني و اخر مشاريعي البرمجية",
+        },
+        {
+            title: "سورس موقع موسوعة المسلم",
+            description: "تطبيق إسلامي يعمل على نظام التشغيل ويندوز سهل الإستخدام و جامع للكثير من الميزات",
+            image: "img/my-programs/muslim.png",
+            url: "https://www.mediafire.com/file/qzucwc0mh91lu0i/MuslimEncyclopedia-main.zip/file",
+            keywords: "برنامج إسلامي موسوعة المسلم ويندوز قرآن أذكار",
         }
-    ]
+    ],
 };
 
 // عرض المشاريع باستخدام loops
@@ -140,55 +290,112 @@ function renderProjects() {
     const programsList = document.getElementById('programs-list');
     projectsData.programs.forEach(project => {
         programsList.innerHTML += `
-                    <li class="project-card animate_animated animate_fadeIn"
-                        data-keywords="${project.keywords}"
-                        onclick="openProjectModal(this)">
-                        <img src="${project.image}" alt="${project.title}" class="project-image">
-                        <h4 class="project-title">${project.title}</h4>
-                        <h6 class="project-description">${project.description}</h6>
-                        <a href="${project.url}" class="project-link" target="_blank"
-                            data-url="${project.url}" aria-label="تحميل ${project.title}">
-                            <i class="fa-solid fa-circle-down"></i>
-                        </a>
-                    </li>
-                `;
+            <li class="project-card animate_animated animate_fadeIn"
+                data-keywords="${project.keywords}"
+                onclick="openProjectModal(this)">
+                <img src="${project.image}" alt="${project.title}" class="project-image">
+                <h4 class="project-title">${project.title}</h4>
+                <h6 class="project-description">${project.description}</h6>
+                <div class="project-link" onclick="openProjectModal(this.parentElement, event)"
+                    data-url="${project.url}" aria-label="تحميل ${project.title}">
+                    <i class="fa-solid fa-circle-down"></i>
+                </div>
+            </li>
+        `;
     });
 
     // عرض الألعاب
     const gamesList = document.getElementById('games-list');
     projectsData.games.forEach(project => {
         gamesList.innerHTML += `
-                    <li class="project-card animate_animated animate_fadeIn"
-                        data-keywords="${project.keywords}"
-                        onclick="openProjectModal(this)">
-                        <img src="${project.image}" alt="${project.title}" class="project-image">
-                        <h4 class="project-title">${project.title}</h4>
-                        <h6 class="project-description">${project.description}</h6>
-                        <a href="${project.url}" class="project-link" target="_blank"
-                            data-url="${project.url}" aria-label="تحميل ${project.title}">
-                            <i class="fa-solid fa-circle-down"></i>
-                        </a>
-                    </li>
-                `;
+            <li class="project-card animate_animated animate_fadeIn"
+                data-keywords="${project.keywords}"
+                onclick="openProjectModal(this)">
+                <img src="${project.image}" alt="${project.title}" class="project-image">
+                <h4 class="project-title">${project.title}</h4>
+                <h6 class="project-description">${project.description}</h6>
+                <div class="project-link" onclick="openProjectModal(this.parentElement, event)"
+                    data-url="${project.url}" aria-label="تحميل ${project.title}">
+                    <i class="fa-solid fa-circle-down"></i>
+                </div>
+            </li>
+        `;
+    });
+
+    // عرض المواقع
+    const websitesList = document.getElementById('websites-list');
+    projectsData.websites.forEach(project => {
+        websitesList.innerHTML += `
+             <li class="project-card animate_animated animate_fadeIn"
+                 data-keywords="${project.keywords}"
+                 onclick="openProjectModal(this)">
+                 <img src="${project.image}" alt="${project.title}" class="project-image">
+                 <h4 class="project-title">${project.title}</h4>
+                 <h6 class="project-description">${project.description}</h6>
+                 <div class="project-link" onclick="openProjectModal(this.parentElement, event)"
+                     data-url="${project.url}" aria-label="زيارة ${project.title}">
+                     <i class="fa-solid fa-globe"></i>
+                 </div>
+             </li>
+         `;
     });
 
     // عرض سورس كود
     const sourceCodeList = document.getElementById('source-code-list');
     projectsData.sourceCode.forEach(project => {
         sourceCodeList.innerHTML += `
-                    <li class="project-card animate_animated animate_fadeIn"
-                        data-keywords="${project.keywords}"
-                        onclick="openProjectModal(this)">
-                        <img src="${project.image}" alt="${project.title}" class="project-image">
-                        <h4 class="project-title">${project.title}</h4>
-                        <h6 class="project-description">${project.description}</h6>
-                        <a href="${project.url}" class="project-link" target="_blank"
-                            data-url="${project.url}" aria-label="تحميل ${project.title}">
-                            <i class="fa-solid fa-circle-down"></i>
-                        </a>
-                    </li>
-                `;
+                <li class="project-card animate_animated animate_fadeIn"
+                    data-keywords="${project.keywords}"
+                    onclick="openProjectModal(this)">
+                    <img src="${project.image}" alt="${project.title}" class="project-image">
+                    <h4 class="project-title">${project.title}</h4>
+                    <h6 class="project-description">${project.description}</h6>
+                    <div class="project-link" onclick="openProjectModal(this.parentElement, event)"
+                        data-url="${project.url}" aria-label="تحميل ${project.title}">
+                        <i class="fa-solid fa-circle-down"></i>
+                    </div>
+                </li>
+            `;
     });
+}
+
+// Project Modal - النسخة المعدلة
+function openProjectModal(element, event = null) {
+    if (event) {
+        event.preventDefault();
+        event.stopPropagation();
+    }
+
+    // حفظ موقع التمرير الحالي
+    const scrollY = window.scrollY || window.pageYOffset;
+    document.body.style.top = `-${scrollY}px`;
+    document.body.classList.add('modal-open');
+
+    const modal = document.getElementById('projectModal');
+    const modalImage = document.getElementById('modalImage');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDescription = document.getElementById('modalDescription');
+    const modalDownloadLink = document.getElementById('modalDownloadLink');
+
+    modalImage.src = element.querySelector('img').src;
+    modalTitle.textContent = element.querySelector('h4').textContent;
+    modalDescription.textContent = element.querySelector('h6').textContent;
+    modalDownloadLink.href = element.querySelector('[data-url]').getAttribute('data-url');
+
+    // تحديد نص الزر بناءً على نوع المشروع
+    const parentListId = element.closest('ul').id;
+    if (parentListId === 'websites-list') {
+        modalDownloadLink.textContent = 'تصفح الموقع';
+    } else {
+        modalDownloadLink.textContent = 'تحميل';
+    }
+
+    modal.style.display = 'block';
+}
+
+function closeProjectModal() {
+    const modal = document.getElementById('projectModal');
+    modal.style.display = 'none';
 }
 
 // Loading Screen Animation
@@ -285,31 +492,11 @@ function showPopup() {
     }, 5000);
 }
 
-// Project Modal
-function openProjectModal(element) {
-    const modal = document.getElementById('projectModal');
-    const modalImage = document.getElementById('modalImage');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalDescription = document.getElementById('modalDescription');
-    const modalDownloadLink = document.getElementById('modalDownloadLink');
-
-    modalImage.src = element.querySelector('img').src;
-    modalTitle.textContent = element.querySelector('h4').textContent;
-    modalDescription.textContent = element.querySelector('h6').textContent;
-    modalDownloadLink.href = element.querySelector('a').getAttribute('data-url');
-
-    modal.style.display = 'block';
-}
-
-function closeProjectModal() {
-    document.getElementById('projectModal').style.display = 'none';
-}
-
 // Close modal when clicking outside
 window.addEventListener('click', (event) => {
     const modal = document.getElementById('projectModal');
     if (event.target === modal) {
-        modal.style.display = 'none';
+        closeProjectModal();
     }
 });
 
