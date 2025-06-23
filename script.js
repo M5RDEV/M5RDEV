@@ -96,7 +96,7 @@ const projectsData = {
             title: "مسبحة الكترونية 📿",
             description: "تطبيق للأندرويد لمساعدتك في عدد رقم الأذكار والتسابيح",
             image: "img/my-programs/Sib7a.png",
-            url: "https://www.mediafire.com/file/jp8zvk8xpkd8rxc/%25D9%2585%25D8%25B3%25D8%25A8%25D8%25AD%25D8%25A9_%25D8%25A7%25D9%2584%25D9%2583%25D8%25AA%25D8%25B1%25D9%2588%25D9%2586%25D9%258A%25D8%25A9.apk/file",
+            url: "https://play.google.com/store/apps/details?id=com.m5rdev.elecounter",
             keywords: "مسبحة أذكار تسبيح أندرويد"
         },
         {
