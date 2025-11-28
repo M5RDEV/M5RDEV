@@ -386,6 +386,17 @@ body.light-mode .search-input {
     transition: var(--transition);
 }
 
+
+/* الصورة العادية (Light Mode) */
+.light-mode .avatar img {
+    content: url("img/avatar.png");
+}
+
+/* الصورة داخل الوضع المظلم (Dark Mode) */
+.avatar img {
+    content: url("img/dark-avatar.png");
+}
+
 .avatar:hover img {
     transform: scale(1.1);
 }
