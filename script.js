@@ -89,7 +89,7 @@ const projectsData = {
             title: "أداة تحميل القراء",
             description: "أداة لتحميل مجموعة من القراء أداة مدمجة مع تطبيق موسوعة المسلم و يمكن تحميلها بمفردها",
             image: "img/my-programs/Radio.png",
-            url: "https://drive.usercontent.google.com/download?id=1EweoMp-fCEIGjMATIRmRfQDrJuvDLkB1&export=download&authuser=0&confirm=t&uuid=799940cf-5b96-4964-ab03-f2a498696ebc&at=APvzH3pqvO-PCmbQ07KCCpMXKSWr%3A1735507851879",
+            url: "https://www.mediafire.com/file/z89vdti050tu1tm/تحميل+قراء.rar/file",
             keywords: "أداة تحميل قراء قرآن إسلامي"
         },
         {
@@ -579,4 +579,5 @@ function createBubbles() {
 document.addEventListener('DOMContentLoaded', () => {
     updateProgress();
     createBubbles();
+
 });
