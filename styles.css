@@ -338,7 +338,7 @@ body.light-mode .search-input {
 /* ===== المحتوى الرئيسي ===== */
 strong {
     display: block;
-     text-align: center;
+    text-align: center;
 }
 
 .container {
@@ -1921,3 +1921,4 @@ body.light-mode .nav-link:hover {
     }
 
 }
+
