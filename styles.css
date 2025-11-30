@@ -336,6 +336,11 @@ body.light-mode .search-input {
 }
 
 /* ===== المحتوى الرئيسي ===== */
+strong {
+    display: block;
+     text-align: center;
+}
+
 .container {
     max-width: 60%;
     margin: 2.5rem auto;
@@ -1914,4 +1919,5 @@ body.light-mode .nav-link:hover {
     .nav-link {
         padding: 0.8rem;
     }
+
 }
