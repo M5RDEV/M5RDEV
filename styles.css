@@ -336,11 +336,6 @@ body.light-mode .search-input {
 }
 
 /* ===== المحتوى الرئيسي ===== */
-strong {
-    display: block;
-    text-align: center;
-}
-
 .container {
     max-width: 60%;
     margin: 2.5rem auto;
@@ -705,12 +700,7 @@ footer {
     text-align: center;
 }
 
-body.light-mode footer {
-    background-color: rgba(248, 249, 250, 0.9);
-}
-
 .footer-text {
-    color: var(--text-color);
     font-size: clamp(0.8rem, 2vw, 1rem);
 }
 
@@ -1919,6 +1909,4 @@ body.light-mode .nav-link:hover {
     .nav-link {
         padding: 0.8rem;
     }
-
 }
-
