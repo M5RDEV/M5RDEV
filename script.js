@@ -245,7 +245,6 @@ const projectsData = {
             url: "https://www.mediafire.com/file/5lme3bqw4y130n4/%25D9%2585%25D8%25B3%25D8%25A8%25D8%25AD%25D8%25A9_%25D8%25A5%25D9%2584%25D9%2583%25D8%25AA%25D8%25B1%25D9%2588%25D9%2586%25D9%258A%25D8%25A9_%25D8%25A3%25D9%2588%25D9%2586%25D9%2584%25D8%25A7%25D9%258A%25D9%2586.zip/file",
             keywords: "محرر أكواد ويب html css javascript",
         },
-        ,
         {
             title: "سورس المسبحة لاندرويد 📿",
             description: "سورس كود المسبحة الكترونية لاندرويد بلغة فلتر Flutter",

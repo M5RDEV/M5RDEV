@@ -1,5 +1,5 @@
 /* ===== الأساسيات والأنماط العامة ===== */
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap');
 
 :root {
     /* الألوان الأساسية للوضع المظلم */
@@ -90,7 +90,7 @@ body {
 /* شعار شاشة التحميل */
 .logo {
     font-size: clamp(2rem, 5vw, 3rem);
-    font-weight: 800;
+    font-weight: 900;
     background: linear-gradient(90deg, var(--primary), var(--secondary));
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -202,7 +202,7 @@ body.light-mode header {
 /* عنوان الهيدر */
 header h1 {
     font-size: clamp(1.5rem, 4vw, 2rem);
-    font-weight: 800;
+    font-weight: 900;
     background: linear-gradient(90deg, var(--primary), var(--secondary));
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -786,7 +786,7 @@ footer {
     padding: 25px;
     border-radius: 15px;
     width: 90%;
-    max-width: 800px;
+    max-width: 900px;
     max-height: 90vh;
     overflow-y: auto;
     box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
@@ -1018,93 +1018,22 @@ body.light-mode .nav-link:hover {
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
     .project-image {
         width: 120px;
         height: 120px;
     }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 999px) {
     .container {
         max-width: 90%;
         margin: 1.5rem auto;
     }
 }
 
-/* هواتف صغيرة (أقل من 576px) */
-@media (max-width: 576px) {
-
-    /* تعديل الهيدر */
-    header {
-        flex-direction: row;
-        padding: 0.5rem;
-    }
-
-    .header-content {
-        width: 100%;
-        margin-top: 0.5rem;
-    }
-
-    .pulse{
-        font-size: 20px;
-        text-decoration: none;
-    }
-
-    /* تعديل مربع البحث */
-    .search-container {
-        visibility: hidden;
-    }
-
-    /* تعديل الصفحة الرئيسية */
-    .container {
-        grid-template-columns: 1fr;
-        max-width: 95%;
-    }
-
-    /* تعديل الصورة الشخصية */
-    .avatar {
-        width: 100px;
-        height: 100px;
-    }
-
-    .avatar-container p {
-        letter-spacing: normal;
-        margin-bottom: 0.5rem;
-    }
-
-    /* تعديل المشاريع */
-    .projects {
-        max-width: 95%;
-    }
-
-    .project-card {
-        padding: 1rem 0.5rem;
-    }
-
-    .project-image {
-        width: 80px;
-        height: 80px;
-    }
-
-    /* تعديل الأزرار العائمة */
-    .float-btn,
-    .back-to-top {
-        width: 40px;
-        height: 40px;
-        font-size: 1rem;
-    }
-
-    .popup-message {
-        max-width: 85%;
-        left: 50%;
-        transform: translateX(-50%);
-        font-size: 0.8rem;
-    }
-}
-
 /* ===== التجاوب مع الشاشات الصغيرة ===== */
-@media (min-width: 992px) {
+@media (min-width: 999px) {
     .container {
         grid-template-columns: 1fr 2fr;
     }
@@ -1116,25 +1045,25 @@ body.light-mode .nav-link:hover {
     }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 900px) {
     .projects-grid {
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 900px) {
     .certifications-content {
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 900px) {
     .project-image {
         height: 200px;
     }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 900px) {
     .project-link {
         font-size: 1.5rem;
         width: 40px;
@@ -1146,8 +1075,8 @@ body.light-mode .nav-link:hover {
     }
 }
 
-/* هواتف متوسطة (من 576px إلى 768px) */
-@media (min-width: 576px) and (max-width: 768px) {
+/* هواتف متوسطة (من 576px إلى 900px) */
+@media (min-width: 576px) and (max-width: 900px) {
 
     /* تعديل الصفحة الرئيسية */
     .container {
@@ -1166,8 +1095,8 @@ body.light-mode .nav-link:hover {
     }
 }
 
-/* أجهزة لوحية (من 768px إلى 992px) */
-@media (min-width: 768px) and (max-width: 992px) {
+/* أجهزة لوحية (من 900px إلى 999px) */
+@media (min-width: 900px) and (max-width: 999px) {
 
     /* تعديل الصفحة الرئيسية */
     .container {
@@ -1181,7 +1110,7 @@ body.light-mode .nav-link:hover {
 }
 
 /* تحسينات خاصة للقائمة المنسدلة على الهواتف */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
     .mobile-menu-btn {
         display: block;
         background: none;
@@ -1194,7 +1123,7 @@ body.light-mode .nav-link:hover {
     .nav-menu {
         display: none;
         position: fixed;
-        top: 70px;
+        top: 60px;
         right: 0;
         width: 100%;
         background-color: var(--bg-secondary);
@@ -1267,43 +1196,8 @@ body.light-mode .nav-link:hover {
     }
 }
 
-/* تحسينات للشاشات الصغيرة جدًا (أقل من 400px) */
-@media (max-width: 400px) {
-
-    /* تصغير حجم الخطوط */
-    :root {
-        font-size: 14px;
-    }
-
-    /* تعديل العناوين */
-    header h1 {
-        font-size: 1.3rem;
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        margin: 0;
-    }
-
-    .section-title {
-        font-size: 1.3rem;
-    }
-
-    /* تعديل المهارات */
-    .skills-list li {
-        padding: 0.3rem;
-        font-size: 0.9rem;
-    }
-
-    /* تعديل الأزرار الاجتماعية */
-    .social-links-avatar a {
-        width: 35px;
-        height: 35px;
-        font-size: 1rem;
-    }
-}
-
 /* تحسينات خاصة للوضع الفاتح على الشاشات الصغيرة */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
     body.light-mode .nav-menu {
         background-color: var(--light-bg-secondary);
     }
@@ -1313,20 +1207,20 @@ body.light-mode .nav-link:hover {
     }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 900px) {
     .modal-btn {
         padding: 20px;
         font-size: 0.7rem;
     }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 900px) {
     .modal-image {
         max-height: 400px;
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
     .modal-content {
         width: 95%;
         padding: 20px;
@@ -1562,8 +1456,8 @@ body.light-mode .nav-link:hover {
     }
 }
 
-/* ===== تحسينات للهواتف المتوسطة (576px - 768px) ===== */
-@media (min-width: 576px) and (max-width: 768px) {
+/* ===== تحسينات للهواتف المتوسطة (576px - 900px) ===== */
+@media (min-width: 576px) and (max-width: 900px) {
     .container {
         max-width: 95%;
     }
@@ -1588,7 +1482,7 @@ body.light-mode .nav-link:hover {
 }
 
 /* ===== تحسينات عامة للهواتف ===== */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
     /* تحسينات القائمة المنسدلة */
     .mobile-menu-btn {
         display: block;
@@ -1603,12 +1497,12 @@ body.light-mode .nav-link:hover {
     .nav-menu {
         display: none;
         position: fixed;
-        top: 70px;
+        top: 60px;
         right: 0;
         width: 100%;
         background-color: var(--bg-secondary);
         flex-direction: column;
-        padding: 0.5rem;
+        padding: 1rem;
         box-shadow: var(--shadow);
         z-index: 999;
         backdrop-filter: blur(10px);
@@ -1645,192 +1539,15 @@ body.light-mode .nav-link:hover {
         max-height: 200px;
     }
 }
-/* ===== تحسينات الهيدر للشاشات الصغيرة جدًا (أقل من 400px) ===== */
-@media (max-width: 400px) {
-    /* تحسينات الهيدر */
-    header {
-        padding: 0.2rem;
-        flex-wrap: nowrap; /* منع الانتقال لسطر جديد */
-        overflow: hidden; /* إخفاء ما يتجاوز العرض */
-    }
-    
-    .header-content {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        width: 100%;
-    }
-    
-    header h1 {
-        font-size: 1rem;
-        white-space: nowrap;
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        margin: 0;
-    }
-    
-    .mobile-menu-btn {
-        font-size: 1.2rem;
-        padding: 0.2rem;
-        order: 2; /* وضع زر القائمة قبل زر الوضع */
-    }
-    
-    .toggle-btn {
-        font-size: 1.1rem;
-        width: 32px;
-        height: 32px;
-        margin-right: 90px;
-    }
-    
-    .search-container {
-        display: none; /* إخفاء مربع البحث تمامًا */
-    }
-    
-    /* تحسينات العناصر الأساسية */
-    .container {
-        padding: 0 0.3rem;
-    }
-    
-    .avatar-container, 
-    .certifications-container {
-        padding: 0.8rem 0.5rem;
-        margin-bottom: 1rem;
-    }
-    
-    .avatar {
-        width: 70px;
-        height: 70px;
-        margin-bottom: 0.8rem;
-    }
-    
-    .avatar-container h2 {
-        font-size: 1rem;
-    }
-    
-    .avatar-container p {
-        font-size: 0.75rem;
-        margin-bottom: 0.6rem;
-    }
-    
-    .typing-text {
-        font-size: 0.7rem;
-    }
-    
-    .social-links-avatar {
-        gap: 0.3rem;
-    }
-    
-    .social-links-avatar a {
-        width: 30px;
-        height: 30px;
-        font-size: 0.9rem;
-    }
-    
-    /* تحسينات قسم المهارات */
-    .section-title {
-        font-size: 1.1rem;
-        margin-bottom: 1rem;
-    }
-    
-    .skills-list li {
-        padding: 0.3rem 0.5rem;
-        font-size: 0.7rem;
-    }
-    
-    /* تحسينات المشاريع */
-    .projects {
-        padding: 0 0.3rem;
-    }
-    
-    .project-card {
-        padding: 0.8rem 0.3rem;
-    }
-    
-    .project-image {
-        width: 60px;
-        height: 60px;
-    }
-    
-    .project-title {
-        font-size: 0.85rem;
-        margin-top: 0.5rem;
-    }
-    
-    .project-description {
-        font-size: 0.7rem;
-        margin-bottom: 1rem;
-    }
-    
-    .project-link {
-        font-size: 1rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: 0 auto;
-        width: 100%;
-        min-height: 35px;
-    }
-    
-    /* محاذاة العناصر في المنتصف أفقيًا */
-    .avatar-container,
-    .certifications-container,
-    .projects {
-        margin-left: auto;
-        margin-right: auto;
-        max-width: 98%;
-    }
-    
-    /* تحسينات الفوتر */
-    footer {
-        padding: 1rem 0.5rem;
-    }
-    
-    .footer-text {
-        font-size: 0.7rem;
-    }
-}
-
-/* ===== تحسينات إضافية للشاشات الصغيرة (أقل من 350px) ===== */
-@media (max-width: 350px) {
-    header h1 {
-        font-size: 0.9rem;
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        margin: 0;
-    }
-    
-    .mobile-menu-btn {
-        font-size: 1.1rem;
-    }
-    
-    .toggle-btn {
-        font-size: 1rem;
-        width: 28px;
-        height: 28px;
-    }
-    
-    .avatar {
-        width: 60px;
-        height: 60px;
-    }
-    
-    .project-image {
-        width: 50px;
-        height: 50px;
-    }
-}
 
 /* ===== تحسينات الهيدر للشاشات الصغيرة ===== */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
     header {
         padding: 0.5rem 1rem;
     }
     
     .header-content {
         display: flex;
-        justify-content: space-between;
         width: 100%;
     }
     
@@ -1857,7 +1574,7 @@ body.light-mode .nav-link:hover {
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
-        margin: 0;
+        margin: 5;
         padding: 0 0.5rem;
     }
 }
@@ -1872,32 +1589,10 @@ body.light-mode .nav-link:hover {
         margin-left: auto;
         margin-right: auto;
     }
-    
-    /* تحسينات إضافية للشاشات الصغيرة جداً */
-    @media (max-width: 400px) {
-        header h1 {
-            font-size: 1rem;
-            padding: 0 0.3rem;
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            margin: 0;
-        }
-        
-        .toggle-btn {
-            font-size: 1.1rem;
-            width: 32px;
-            height: 32px;
-        }
-        
-        .mobile-menu-btn {
-            font-size: 1.3rem;
-        }
-    }
 }
 
 /* ===== تحسينات القائمة المنسدلة ===== */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
     .nav-menu {
         top: 60px;
         right: 0;
@@ -1908,5 +1603,38 @@ body.light-mode .nav-link:hover {
     
     .nav-link {
         padding: 0.8rem;
+    }
+}
+
+/* تحسين ظهور القائمة المنسدلة لجميع الهواتف */
+@media (max-width: 999px) {
+    .nav-menu {
+        display: none;
+        position: fixed;
+        top: 60px;
+        right: 0;
+        width: 100%;
+        background-color: var(--bg-secondary);
+        flex-direction: column;
+        padding: 1rem;
+        box-shadow: var(--shadow);
+        z-index: 999;
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .nav-menu.active {
+        display: flex;
+    }
+
+    .nav-link {
+        padding: 0.8rem;
+        border-bottom: 1px solid var(--border-color);
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-link:last-child {
+        border-bottom: none;
     }
 }
