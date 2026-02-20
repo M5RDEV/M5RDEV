@@ -199,7 +199,7 @@ const projectsData = {
         {
             title: "سورس Crazylogin",
             description: "سورس كود برنامج login و register بسيطة ومسلية بلغة سي شارب بلغة سي شارب C#",
-            image: "img/source-code/crazylogin-code.png",
+            image: "img/my-programs/crazylogin-code.png",
             url: "https://drive.google.com/file/d/1pHAvSQ1Hqbw158_JBrGpMgGoRPH9B0Wl/view?usp=sharing",
             keywords: "سورس كود CrazyLogin"
         },
@@ -580,3 +580,4 @@ document.addEventListener('DOMContentLoaded', () => {
     createBubbles();
 
 });
+
