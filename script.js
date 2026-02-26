@@ -266,6 +266,14 @@ const projectsData = {
             url: "https://www.mediafire.com/file/y765zxugz1uhd9q/RatePic+Source+code.rar/file",
             keywords: "تقيم الصور و ترتيب الصور",
         },
+        ,
+        {
+            title: "Speech text سورس",
+            description: "سورس تطبيق Speech text ناطق النصوص بلغة C#",
+            image: "img/my-programs/Speech.png",
+            url: "https://www.mediafire.com/file/iin41ow8i3fysm5/Speech+Text.rar/file",
+            keywords: "ناطق النصوص سرعة القراءة C#",
+        },
         {
             title: "سورس المرشد السياحي",
             description: "منصة عربية شاملة تحتوي على كل المعلومات السياحية عن الدول العربية و بعض المعلومات",
@@ -587,4 +595,5 @@ document.addEventListener('DOMContentLoaded', () => {
     createBubbles();
 
 });
+
 
