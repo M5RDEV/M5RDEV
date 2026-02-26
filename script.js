@@ -126,6 +126,13 @@ const projectsData = {
             image: "img/my-programs/pic-rate.png",
             url: "https://www.mediafire.com/file/c361bn2kd0nooyf/Pic_Rate.rar/file",
             keywords: "تقيم الصور و ترتيب الصور",
+        },
+        {
+            title: "Speech text [ناطق النصوص]",
+            description: "تطبيق يقوم بنطق النصوص و التحكم في سرعة القراءة بلغة C#",
+            image: "img/my-programs/Speech.png",
+            url: "https://www.mediafire.com/file/4w0ob9f70wag8qn/Speech_text.rar/file",
+            keywords: "ناطق النصوص سرعة القراءة C#",
         }
     ],
     games: [
