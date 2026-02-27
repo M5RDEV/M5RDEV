@@ -167,6 +167,13 @@ const projectsData = {
             keywords: "موقع إسلامي موسوعة المسلم ويب قرآن أذكار",
         },
         {
+            title: "مسبحة الكترونية أونلاين📿",
+            description: "موقع إلكتروني لمساعدتك في عدد رقم الأذكار والتسابيح",
+            image: "img/my-programs/Sib7a.png",
+            url: "https://m5rdev.github.io/Counter/",
+            keywords: "مسبحة أذكار أونلاين"
+        },
+        {
             title: "ColorMate",
             description: "أداة لاختيار وتنسيق الألوان للمصممين والمطورين",
             image: "img/my-websites/ColorMate-code.png",
@@ -595,5 +602,6 @@ document.addEventListener('DOMContentLoaded', () => {
     createBubbles();
 
 });
+
 
 
