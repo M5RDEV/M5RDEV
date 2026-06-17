@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>M5R DEV | محمود راضي - مبرمج ومطور برمجيات</title>
     <meta name="description" content="موقع شخصي لعرض مشاريعي البرمجية وأعمالي في تطوير البرامج والتطبيقات والألعاب">
-   
+
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="M5RDEV - الباشمبرمج محمود راضي">
     <meta property="og:description"
@@ -23,172 +23,200 @@
 </head>
 
 <body>
-    <!-- شاشة التحميل -->
-    <div class="loading-screen" id="loadingScreen">
-        <div class="logo">m5rdev</div>
-        <div class="tagline">نبني مستقبل التطوير بأيدٍ عربية</div>
-        <div class="loader-container">
-            <div class="loader-progress" id="progress"></div>
-            <div class="percentage" id="percentage">0%</div>
+    <!-- شاشة التحميل بشكل مشابه لنظام تشغيل-->
+    <div class="loading-screen" id="loadingScreen" aria-hidden="false">
+        <div class="win-brand">
+            <div class="win-logo" aria-hidden="true">
+                <span class="pane"></span>
+                <span class="pane"></span>
+                <span class="pane"></span>
+                <span class="pane"></span>
+            </div>
         </div>
-        <div class="status" id="status-text">الباشمبرمج محمود</div>
-        <div class="tech-stack">
-            <i class="fa-solid fa-code"></i>
-            <i class="fa-brands fa-windows"></i>
-            <i class="fa-solid fa-gamepad"></i>
-            <i class="fa-brands fa-android"></i>
-            <i class="fa-brands fa-chrome"></i>
+        <div class="win-spinner" id="winSpinner" aria-hidden="true">
+            <div class="dot d1"></div>
+            <div class="dot d2"></div>
+            <div class="dot d3"></div>
+            <div class="dot d4"></div>
+            <div class="dot d5"></div>
+            <div class="dot d6"></div>
+            <div class="dot d7"></div>
+            <div class="dot d8"></div>
         </div>
+        <div class="percentage" id="percentage">0%</div>
+        <div class="status" id="status-text">جاري التحميل...</div>
     </div>
 
     <!-- فقاعات الخلفية المتحركة -->
     <div class="bubbles" id="bubbles"></div>
 
-    <!-- الهيدر -->
-    <header class="fadeIn">
-        <div class="header-content">
-            <button id="mobileMenuBtn" class="toggle-btn mobile-menu-btn">
-                <i class="fa-solid fa-bars"></i>
-            </button>
-            <div class="nav-menu" id="navMenu">
-                <a href="#projects" class="nav-link">البرامج</a>
-                <a href="#games" class="nav-link">الألعاب</a>
-                <a href="#websites" class="nav-link">مواقعي بمساعدة ai</a>
-                <a href="#source-code" class="nav-link">السورس كود</a>
+    <!-- المحتوى (سطح المكتب الوهمي) -->
+    <div id="desktop" class="desktop hidden">
+
+        <!-- خلفية السطح المكتب -->
+        <div class="desktop-wallpaper"></div>
+        <!-- نص أنميشن الكتابة في منتصف السطح المكتب -->
+        <div class="typing-container">
+            <span class="typing-cursor">|</span><p id="typing-text" class="typing-text"></p>
+        </div>
+
+        <!-- أيقونات سطح المكتب -->
+        <div class="desktop-icons" id="desktopIcons">
+            <div class="desktop-icon" onclick="showSocialMediaModal()" style="cursor: pointer;" tabindex="0"
+                title="تواصل معي">
+                <i class="fa-solid fa-globe"></i>
+                <span>الباشمبرمج</span>
+            </div>
+
+            <div class="desktop-icon" data-window="win-projects" tabindex="0">
+                <i class="fa-brands fa-google-play"></i>
+                <span>البرامج</span>
+            </div>
+            <div class="desktop-icon" data-window="win-games" tabindex="0">
+                <i class="fa-solid fa-gamepad fa-2x"></i>
+                <span>الألعاب</span>
+            </div>
+            <div class="desktop-icon" data-window="win-websites" tabindex="0">
+                <i class="fa-brands fa-chrome fa-2x"></i>
+                <span>المواقع</span>
+            </div>
+            <div class="desktop-icon" data-window="win-source" tabindex="0">
+                <i class="fa-solid fa-code fa-2x"></i>
+                <span>السورس</span>
+            </div>
+
+        </div>
+
+        <!-- حاوية النوافذ العائمة -->
+        <div id="windows" class="windows"></div>
+
+        <!-- قائمة Start مع بحث ونتائج -->
+        <div id="startMenu" class="start-menu hidden" aria-hidden="true">
+            <div class="start-header">
+                <input id="startSearch" class="start-search" placeholder="ابحث عن تطبيق أو لعبة أو سورس كود أو موقع..."
+                    aria-label="بحث">
+            </div>
+            <div id="startResults" class="start-results">
+                <div class="start-grid">
+                    <button class="start-item" data-window="win-projects"><i
+                            class="fa-solid fa-folder-open"></i><span>البرامج</span></button>
+                    <button class="start-item" data-window="win-games"><i
+                            class="fa-solid fa-gamepad"></i><span>الألعاب</span></button>
+                    <button class="start-item" data-window="win-websites"><i
+                            class="fa-brands fa-chrome"></i><span>المواقع</span></button>
+                    <button class="start-item" data-window="win-source"><i
+                            class="fa-solid fa-code"></i><span>السورس</span></button>
+                </div>
+                <div id="startSearchResultsList" class="start-search-list"></div>
             </div>
         </div>
 
-        <h1 class="pulse">M5R DEV</h1>
-
-        <div class="header-content">
-            <div class="search-container">
-                <input type="text" id="searchInput" placeholder="ابحث هنا..." class="search-input">
-                <button class="search-btn"><i class="fas fa-search"></i></button>
+        <!-- قائمة الإعدادات من اليسار -->
+        <div id="settingsMenu" class="settings-menu hidden" aria-hidden="true">
+            <div class="settings-header">
+                <h3>الإعدادات</h3>
+                <button class="settings-close" onclick="toggleSettingsMenu()" aria-label="إغلاق">✕</button>
             </div>
-            <button class="toggle-btn" id="themeToggle">
-                <i class="fas fa-sun" id="themeIcon"></i>
-            </button>
-        </div>
-    </header>
-
-    <!-- المحتوى الرئيسي -->
-    <div class="container">
-        <!-- قسم الملف الشخصي -->
-        <div class="avatar-container animate_animated animate_fadeIn" id="about-us">
-            <div class="avatar">
-                <img id="profile-image" src="img/avatar.png" alt="Profile" class="pulse">
-            </div>
-            <h2>Mahmoud Rady</h2>
-            <div class="typing-container">
-                <span class="typing-cursor">|</span>
-                <p id="typing-text" class="typing-text"></p>
-            </div>
-            <div class="social-links-avatar animate_animated animate_fadeIn">
-                <a href="https://www.facebook.com/M5RDEV.Facebook" target="_blank" aria-label="Facebook">
-                    <i class="fab fa-facebook"></i>
-                </a>
-                <a href="https://www.instagram.com/m5rdev/" target="_blank" aria-label="Instagram">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="https://www.youtube.com/channel/UCbFjpt37dvT1GqdXCNQ1Opg" target="_blank" aria-label="YouTube">
-                    <i class="fab fa-youtube"></i>
-                </a>
-                <a href="https://www.linkedin.com/in/m5r-dev-641575300" target="_blank" aria-label="LinkedIn">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-                <a href="https://t.me/m5rdev" target="_blank" aria-label="Telegram">
-                    <i class="fab fa-telegram"></i>
-                </a>
-                <a href="https://github.com/m5rdev" target="_blank" aria-label="GitHub">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="https://m5rdev.itch.io/" target="_blank" aria-label="Itch.io">
-                    <i class="fa-brands fa-itch-io"></i>
-                </a>
-            </div>
-        </div>
-
-        <!-- قسم الشهادات والمهارات -->
-        <div class="certifications-container animate_animated animate_fadeIn" id="certifications">
-            <h2 class="section-title">الشهادات والمهارات</h2>
-            <div class="certifications-content">
-                <div class="skills-section animate_animated animate_fadeInRight">
-                    <h3><strong>الشهادات</strong></h3>
-                    <ul class="skills-list">
-                        <li>بكالوريوس هندسة MC Academy</li>
-                    </ul>
-
-                    <h3><strong>المهارات</strong></h3>
-                    <ul class="skills-list">
-                        <li>C# </li>
-                        <li>C++</li>
-                        <li>GdScript</li>
-                        <li>Flutter & Dart</li>
-                    </ul>
+            <div class="settings-content">
+                <div class="settings-item">
+                    <div class="settings-label">
+                        <i class="fa-solid fa-moon"></i>
+                        <span>الوضع المظلم</span>
+                    </div>
+                    <input type="checkbox" id="settingsDarkMode" class="settings-toggle">
+                </div>
+                <div class="settings-divider"></div>
+                <div class="settings-item">
+                    <div class="settings-label">
+                        <i class="fa-solid fa-film"></i>
+                        <span>تأثيرات الحركة</span>
+                    </div>
+                    <input type="checkbox" id="settingsAnimations" class="settings-toggle">
+                </div>
+                <div class="settings-divider"></div>
+                <div class="settings-item">
+                    <div class="settings-label">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        <span>فتح الروابط خارجياً</span>
+                    </div>
+                    <input type="checkbox" id="settingsExternalLinks" class="settings-toggle">
+                </div>
+                <div class="settings-divider"></div>
+                <div class="settings-item">
+                    <div class="settings-label">
+                        <i class="fa-solid fa-window-maximize"></i>
+                        <span>نوافذ متعددة</span>
+                    </div>
+                    <input type="checkbox" id="settingsMultipleWindows" class="settings-toggle">
+                </div>
+                <div class="settings-divider"></div>
+                <div class="settings-item">
+                    <div class="settings-label">
+                        <i class="fa-solid fa-sliders-h"></i>
+                        <span>شفافية النوافذ</span>
+                    </div>
+                    <input type="checkbox" id="settingsTransparency" class="settings-toggle">
+                </div>
+                <div class="settings-item" id="settingsTransparencyLevelContainer" style="display:none;">
+                    <div class="settings-label">
+                        <span>نسبة الشفافية (%)</span>
+                    </div>
+                    <input type="range" id="settingsTransparencyLevel" min="0.5" max="1" step="0.01" value="0.7">
+                </div>
+                <div class="settings-divider"></div>
+                <div class="settings-item">
+                    <div class="settings-label">
+                        <i class="fa-solid fa-sun"></i>
+                        <span>سطوع الموقع</span>
+                    </div>
+                    <input type="range" id="settingsBrightness" min="0.5" max="1.5" step="0.01" value="1">
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- قسم المشاريع -->
-    <div class="projects">
-        <h2 id="my-projects" class="section-title animate_animated animate_fadeIn">مشاريعي البرمجية</h2>
-
-        <!-- مشاريع البرامج -->
-        <div class="project-category animate_animated animate_fadeIn" id="projects">
-            <h3 class="category-title">برامج</h3>
-            <ul class="projects-grid" id="programs-list" onclick="showProjectModal(event)"></ul>
+        <div class="popup-message" id="popupMessage">
+            <p>اللهم أنصر أخواننا المسلمين المستضعفين في فلسطين و السودان وسوريا وكل مكان يارب العالمين</p>
+        </div>
+        <div class="float-btn back-to-top" id="backToTop">
+            <i class="fas fa-arrow-up"></i>
         </div>
 
-        <!-- مشاريع الألعاب -->
-        <div class="project-category animate_animated animate_fadeIn" id="games">
-            <h3 class="category-title">ألعاب</h3>
-            <ul class="projects-grid" id="games-list" onclick="showProjectModal(event)"></ul>
-        </div>
-
-        <!-- مشاريع المواقع -->
-        <div class="project-category animate_animated animate_fadeIn" id="websites">
-            <h3 class="category-title">مواقعي ai</h3>
-            <ul class="projects-grid" id="websites-list" onclick="showProjectModal(event)"></ul>
-        </div>
-
-        <!-- مشاريع السورس كود -->
-        <div class="project-category animate_animated animate_fadeIn" id="source-code">
-            <h3 class="category-title">سورس كود</h3>
-            <ul class="projects-grid" id="source-code-list" onclick="showProjectModal(event)"></ul>
-        </div>
-    </div>
-
-    <!-- نافذة المشروع المنبثقة -->
-    <div id="projectModal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeProjectModal()">&times;</span>
-            <img id="modalImage" class="modal-image" src="" alt="Project Image">
-            <div class="modal-details">
-                <h3 id="modalTitle"></h3>
-                <p id="modalDescription"></p>
+        <!-- شريط المهام الشبيه بالويندوز (Mica effect) -->
+        <div class="taskbar" aria-hidden="true">
+            <div class="taskbar-left">
+                <button class="start-btn" aria-label="Start">
+                    <span class="start-logo" aria-hidden="true">
+                        <span class="pane"></span>
+                        <span class="pane"></span>
+                        <span class="pane"></span>
+                        <span class="pane"></span>
+                    </span>
+                </button>
             </div>
-            <div class="modal-actions">
-                <a id="modalDownloadLink" href="#" target="_blank" class="modal-btn download-btn">تحميل</a>
+            <div class="taskbar-center" aria-hidden="false">
+                <div class="taskbar-search">
+                    <input type="text" id="taskbarSearch" class="taskbar-search-input" placeholder="Search apps..."
+                        aria-label="Search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+            </div>
+            <div class="taskbar-right">
+                <div class="system-tray">
+                    <span id="tray-time"></span>
+                    <button id="traySettingsBtn" class="tray-btn" aria-label="Settings" onclick="toggleSettingsMenu()"><i class="fa-solid fa-gear"></i></button>
+                    <!-- info button moved into taskbar -->
+                    <button id="trayInfoBtn" class="tray-btn" aria-label="Info" title="دعاء" onclick="showPopup()"><i
+                            class="fa-solid fa-hands-praying"></i></button>
+
+                    <button id="trayBatteryBtn" class="tray-btn" aria-label="Battery Status" title="حالة البطارية" onclick="showBatteryStatus()">
+                        <i class="fa-solid fa-battery-three-quarters"></i>
+                    </button>
+
+                </div>
             </div>
         </div>
-    </div>
 
-    <!-- الأزرار العائمة -->
-    <div class="float-btn info-btn" onclick="showPopup()">
-        <i class="fa-solid fa-hands-praying"></i>
-    </div>
-    <div class="popup-message" id="popupMessage">
-        <p>اللهم أنصر أخواننا المسلمين المستضعفين في فلسطين و السودان وسوريا وكل مكان يارب العالمين</p>
-    </div>
-
-    <div class="float-btn back-to-top" id="backToTop">
-        <i class="fas fa-arrow-up"></i>
-    </div>
-
-    <footer class="animate_animated animate_fadeIn">
-        <p class="footer-text">جميع الحقوق محفوظة &copy; 2024 M5RDEV</p>
-    </footer>
+    </div> <!-- #desktop end -->
 
     <script src="script.js"></script>
 </body>
