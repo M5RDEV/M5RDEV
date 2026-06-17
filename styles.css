@@ -1771,6 +1771,7 @@ footer {
     max-height: calc(100svh - 120px);
     overflow-y: auto;
     overflow-x: hidden;
+    padding-top: 10px;
     padding-bottom: 12px;
     scrollbar-width: thin;
 }
@@ -1835,7 +1836,7 @@ footer {
         align-items: start;
         max-height: calc(100svh - 86px);
         max-width: calc(100vw - 24px);
-        padding: 4px 0 12px;
+        padding: 10px 0 12px;
         overflow-x: auto;
         overflow-y: hidden;
     }
