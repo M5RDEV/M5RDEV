@@ -2125,6 +2125,10 @@ function removeTaskbarEntry(id){
 }
 
 // حفظ واستعادة موضع النوافذ
+function isMobileShell() {
+    return window.matchMedia('(max-width: 768px)').matches;
+}
+
 function getCenteredWindowPosition(width, height) {
     const screenWidth = window.innerWidth;
     const screenHeight = window.innerHeight;
@@ -2135,6 +2139,8 @@ function getCenteredWindowPosition(width, height) {
 }
 
 function saveWindowState(id, position) {
+    if(isMobileShell()) return;
+
     const state = {
         left: position.left,
         top: position.top,
@@ -2145,31 +2151,65 @@ function saveWindowState(id, position) {
 }
 
 function getWindowState(id) {
+    if(isMobileShell()) return null;
+
     const saved = localStorage.getItem(`window-state-${id}`);
-    return saved ? JSON.parse(saved) : null;
+    if(!saved) return null;
+
+    try {
+        return JSON.parse(saved);
+    } catch(e) {
+        localStorage.removeItem(`window-state-${id}`);
+        return null;
+    }
+}
+
+function isValidWindowState(state, defaultWidth, defaultHeight) {
+    if(!state) return false;
+
+    const values = [state.left, state.top, state.width, state.height];
+    if(values.some(value => !Number.isFinite(Number(value)))) return false;
+
+    const minWidth = Math.min(defaultWidth === 'auto' ? 900 : defaultWidth, 520);
+    const minHeight = Math.min(defaultHeight === 'auto' ? 550 : defaultHeight, 340);
+    const maxLeft = window.innerWidth - 80;
+    const maxTop = window.innerHeight - 120;
+
+    return (
+        state.width >= minWidth &&
+        state.height >= minHeight &&
+        state.left >= -20 &&
+        state.top >= -20 &&
+        state.left <= maxLeft &&
+        state.top <= maxTop
+    );
+}
+
+function applyDefaultWindowState(win, defaultWidth = 'auto', defaultHeight = 'auto') {
+    const width = defaultWidth === 'auto' ? 900 : defaultWidth;
+    const height = defaultHeight === 'auto' ? 550 : defaultHeight;
+    const pos = getCenteredWindowPosition(width, height);
+    win.style.left = pos.left + 'px';
+    win.style.top = pos.top + 'px';
+    win.style.width = width + 'px';
+    win.style.height = height + 'px';
 }
 
 function applyWindowState(win, id, defaultWidth = 'auto', defaultHeight = 'auto') {
     const saved = getWindowState(id);
-    if(saved) {
+    if(isValidWindowState(saved, defaultWidth, defaultHeight)) {
         win.style.left = saved.left + 'px';
         win.style.top = saved.top + 'px';
         win.style.width = saved.width + 'px';
         win.style.height = saved.height + 'px';
     } else {
         // فتح في منتصف الشاشة للمرة الأولى
-        const width = defaultWidth === 'auto' ? 900 : defaultWidth;
-        const height = defaultHeight === 'auto' ? 550 : defaultHeight;
-        const pos = getCenteredWindowPosition(width, height);
-        win.style.left = pos.left + 'px';
-        win.style.top = pos.top + 'px';
-        win.style.width = width + 'px';
-        win.style.height = height + 'px';
+        applyDefaultWindowState(win, defaultWidth, defaultHeight);
     }
 }
 
 function captureWindowState(win, id) {
-    if(!win.classList.contains('maximized')) {
+    if(!isMobileShell() && !win.classList.contains('maximized')) {
         saveWindowState(id, {
             left: parseInt(win.style.left),
             top: parseInt(win.style.top),
