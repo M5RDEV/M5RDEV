@@ -815,7 +815,7 @@ document.addEventListener('click', (e) => {
     }
 
     // Click outside Start menu closes it with animation
-    if (!e.target.closest('#startMenu') && !e.target.closest('.start-btn')) {
+    if (!e.target.closest('#startMenu') && !e.target.closest('.start-btn') && !e.target.closest('.taskbar-search')) {
         const sm = document.getElementById('startMenu');
         if(sm && !sm.classList.contains('hidden')){
             toggleStartMenu();
