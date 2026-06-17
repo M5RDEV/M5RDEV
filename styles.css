@@ -3395,7 +3395,7 @@ body {
         left: 10px !important;
         right: 10px !important;
         top: calc(env(safe-area-inset-top) + 10px) !important;
-        bottom: calc(env(safe-area-inset-bottom) + 78px) !important;
+        bottom: calc(max(8px, env(safe-area-inset-bottom)) + 66px) !important;
         width: auto !important;
         height: auto !important;
         max-width: none;
@@ -3534,7 +3534,7 @@ body {
     .settings-menu {
         left: 10px;
         right: 10px;
-        bottom: calc(env(safe-area-inset-bottom) + 78px);
+        bottom: calc(max(8px, env(safe-area-inset-bottom)) + 66px);
         width: auto;
         max-height: calc(100svh - 112px);
         border-radius: 14px;
@@ -3586,12 +3586,15 @@ body {
     }
 
     .taskbar {
+        position: fixed !important;
         left: 10px;
         right: 10px;
-        bottom: calc(env(safe-area-inset-bottom) + 10px);
+        bottom: max(8px, env(safe-area-inset-bottom)) !important;
         height: 58px;
         padding: 0 8px;
         border-radius: 14px;
+        z-index: 10040;
+        transform: translateZ(0);
     }
 
     .taskbar-left,
@@ -3654,7 +3657,7 @@ body {
     .popup-message {
         left: 10px;
         right: 10px;
-        bottom: calc(env(safe-area-inset-bottom) + 78px);
+        bottom: calc(max(8px, env(safe-area-inset-bottom)) + 66px);
         width: auto;
         border-radius: 12px;
     }
@@ -3721,5 +3724,30 @@ body {
     .desktop-icons {
         top: calc(env(safe-area-inset-top) + 16px);
         max-height: calc(100svh - 104px);
+    }
+
+    .taskbar {
+        height: 50px;
+        left: 8px;
+        right: 8px;
+    }
+
+    .start-btn,
+    .task-icon,
+    .tray-btn {
+        width: 36px;
+        height: 36px;
+    }
+
+    .taskbar-search {
+        height: 36px;
+    }
+
+    .window,
+    .window.maximized,
+    .start-menu,
+    .settings-menu,
+    .popup-message {
+        bottom: calc(max(6px, env(safe-area-inset-bottom)) + 56px) !important;
     }
 }
