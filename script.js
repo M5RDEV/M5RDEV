@@ -55,6 +55,16 @@ function applyWindowTransparency(){
 const browserTabs = new Map(); // Store tabs for browser windows
 const folderTabs = new Map(); // Store tabs for Project Explorer windows
 
+function faviconForUrl(url) {
+    try {
+        if(!url || url === 'about:blank') return '';
+        const host = new URL(url).hostname;
+        return `https://www.google.com/s2/favicons?domain=${encodeURIComponent(host)}&sz=32`;
+    } catch(e) {
+        return '';
+    }
+}
+
 function createNewBrowserTab(windowId, url = '') {
     const tabId = `tab-${Date.now()}-${Math.random()}`;
     if(!browserTabs.has(windowId)) {
@@ -64,6 +74,7 @@ function createNewBrowserTab(windowId, url = '') {
         id: tabId, 
         url: url || 'about:blank', 
         title: url ? new URL(url).hostname : 'New Tab',
+        favicon: faviconForUrl(url),
         isActive: true 
     };
     const tabs = browserTabs.get(windowId);
@@ -1723,6 +1734,7 @@ function initializeBrowser(winEl, windowId) {
         const activeTab = (browserTabs.get(windowId) || []).find(t => t.isActive);
         if(activeTab) {
             activeTab.url = url;
+            activeTab.favicon = faviconForUrl(url);
             try {
                 activeTab.title = new URL(url).hostname;
             } catch(e) {
@@ -1864,6 +1876,7 @@ function renderBrowserTabs(winEl, windowId) {
         tabEl.className = `browser-tab ${tab.isActive ? 'active' : ''}`;
         tabEl.dataset.tabId = tab.id;
         tabEl.innerHTML = `
+            ${tab.favicon ? `<img class="browser-tab-favicon" src="${tab.favicon}" alt="">` : '<i class="fa-brands fa-chrome browser-tab-fallback"></i>'}
             <span class="browser-tab-title">${tab.title}</span>
             <button class="browser-tab-close" data-tab-id="${tab.id}">✕</button>
         `;

@@ -2834,6 +2834,20 @@ body.light-mode .taskbar-search:focus-within {
     user-select: none;
 }
 
+.browser-tab-favicon,
+.browser-tab-fallback {
+    width: 16px;
+    height: 16px;
+    flex: 0 0 16px;
+    border-radius: 4px;
+    object-fit: contain;
+}
+
+.browser-tab-fallback {
+    color: var(--primary);
+    font-size: 14px;
+}
+
 .browser-tab-close {
     background: none;
     border: none;
@@ -3240,6 +3254,12 @@ body {
     overflow: hidden;
 }
 
+@supports (height: 100dvh) {
+    .desktop {
+        height: 100dvh;
+    }
+}
+
 .windows {
     position: absolute;
     inset: 0;
@@ -3275,7 +3295,7 @@ body {
     }
 
     .desktop {
-        padding: calc(env(safe-area-inset-top) + 14px) 12px calc(env(safe-area-inset-bottom) + 82px);
+        padding: calc(env(safe-area-inset-top) + 14px) 12px calc(max(16px, env(safe-area-inset-bottom)) + 82px);
         touch-action: manipulation;
     }
 
@@ -3395,7 +3415,7 @@ body {
         left: 10px !important;
         right: 10px !important;
         top: calc(env(safe-area-inset-top) + 10px) !important;
-        bottom: calc(max(8px, env(safe-area-inset-bottom)) + 66px) !important;
+        bottom: calc(max(16px, env(safe-area-inset-bottom)) + 68px) !important;
         width: auto !important;
         height: auto !important;
         max-width: none;
@@ -3534,7 +3554,7 @@ body {
     .settings-menu {
         left: 10px;
         right: 10px;
-        bottom: calc(max(8px, env(safe-area-inset-bottom)) + 66px);
+        bottom: calc(max(16px, env(safe-area-inset-bottom)) + 68px);
         width: auto;
         max-height: calc(100svh - 112px);
         border-radius: 14px;
@@ -3589,12 +3609,13 @@ body {
         position: fixed !important;
         left: 10px;
         right: 10px;
-        bottom: max(8px, env(safe-area-inset-bottom)) !important;
+        bottom: max(16px, env(safe-area-inset-bottom)) !important;
         height: 58px;
         padding: 0 8px;
         border-radius: 14px;
         z-index: 10040;
         transform: translateZ(0);
+        will-change: transform;
     }
 
     .taskbar-left,
@@ -3657,7 +3678,7 @@ body {
     .popup-message {
         left: 10px;
         right: 10px;
-        bottom: calc(max(8px, env(safe-area-inset-bottom)) + 66px);
+        bottom: calc(max(16px, env(safe-area-inset-bottom)) + 68px);
         width: auto;
         border-radius: 12px;
     }
@@ -3671,6 +3692,26 @@ body {
         max-height: calc(100svh - 32px);
         border-radius: 14px;
         overflow-y: auto;
+    }
+
+    @supports (height: 100dvh) {
+        .desktop {
+            height: 100dvh;
+        }
+
+        .desktop-icons {
+            max-height: calc(100dvh - 204px);
+        }
+
+        .window,
+        .window.maximized {
+            bottom: calc(max(16px, env(safe-area-inset-bottom)) + 68px) !important;
+        }
+
+        .start-menu,
+        .settings-menu {
+            max-height: calc(100dvh - 128px);
+        }
     }
 }
 
@@ -3730,6 +3771,7 @@ body {
         height: 50px;
         left: 8px;
         right: 8px;
+        bottom: max(10px, env(safe-area-inset-bottom)) !important;
     }
 
     .start-btn,
