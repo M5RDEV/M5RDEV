@@ -243,12 +243,21 @@ document.addEventListener('DOMContentLoaded', () => {
 // بيانات المشاريع
 const projectsData = {
     programs: [
+        
         {
             title: "موسوعة المسلم",
             description: "تطبيق إسلامي يعمل على نظام التشغيل ويندوز سهل الإستخدام و جامع للكثير من الميزات",
             image: "img/my-programs/muslim.png",
             url: "https://m5rdev.github.io/MuslimEncyclopedia/",
             keywords: "برنامج إسلامي موسوعة المسلم ويندوز قرآن أذكار",
+        },
+        {
+            title: "RECO",
+            description: "مسجّل شاشة ومحرّر فيديو بالذكاء الاصطناعي، بترجمة تلقائية وأصوات طبيعية وإزالة الموسيقى وتصدير 4K مجانًا بسبع لغات.",
+            image: "img/my-programs/reco.png",
+            url: "https://reco-m5rdev.m5radydev.workers.dev/",
+            keywords: "RECO تطبيق ويب",
+            actionLabel: "فتح"
         },
         {
             title: "أداة تحميل القراء",
@@ -613,10 +622,6 @@ function updateProgress() {
     let count = 0;
     const statusMessages = ["مطور العاب", "مبرمج مواقع", "مبرمج تطبيقات", ""];
 
-    // Ensure spinner keeps animating while loading screen exists
-    const winSpinner = document.getElementById('winSpinner');
-    if (winSpinner) winSpinner.classList.add('spinning');
-
     const interval = setInterval(() => {
         count++;
         percentageText.textContent = count + '%';
@@ -640,8 +645,6 @@ function updateProgress() {
                 renderProjects(); // عرض المشاريع بعد انتهاء التحميل
                 // تحديث الوقت في علبة النظام
                 updateTrayTime();
-                // stop spinner once loading screen is hidden
-                if (winSpinner) winSpinner.classList.remove('spinning');
             }, 600);
         }
     }, 20);
@@ -1496,7 +1499,7 @@ function contentFromId(id){
                             <div class="win-item-desc">${it.description}</div>
                         </div>
                         <div class="win-item-actions">
-                            <a href="${it.url}" target="_blank" rel="noopener" class="btn">تحميل</a>
+                            <a href="${it.url}" target="_blank" rel="noopener" class="btn">${it.actionLabel || "تحميل"}</a>
                         </div>
                     </li>
                 `;
@@ -1670,7 +1673,7 @@ function updateFolderDisplay(winEl, windowId) {
                         <div class="win-item-desc">${it.description}</div>
                     </div>
                     <div class="win-item-actions">
-                        <a href="${it.url}" target="_blank" rel="noopener" class="btn">تحميل</a>
+                        <a href="${it.url}" target="_blank" rel="noopener" class="btn">${it.actionLabel || "تحميل"}</a>
                     </div>
                 </li>
             `;

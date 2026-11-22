@@ -1,4 +1,4 @@
-﻿/* ===== الأساسيات والأنماط العامة ===== */
+/* ===== الأساسيات والأنماط العامة ===== */
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap');
 
 :root {
@@ -102,6 +102,7 @@
     --brightness: 1;
     --shadow-color: rgba(0, 0, 0, 0.3);
 }
+
 
 /* الوضع الفاتح - فقط تغيير القيم الأساسية */
 body.light-mode {
@@ -549,19 +550,6 @@ header h1 {
     transform: scale(1.1);
 }
 
-.win-spinner.spinning {
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
-}
 
 /* الصورة داخل الوضع المظلم (Dark Mode) */
 .avatar img {
@@ -2482,14 +2470,61 @@ body {
     height: 90px;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+        "top-left top-right"
+        "bottom-left bottom-right";
+    direction: ltr;
     gap: 6px;
     margin-bottom: 18px;
 }
 
 .win-logo .pane {
-    background: linear-gradient(180deg, #0a66d8, #1458b4);
+    background-image: url("img/logo.svg");
+    background-size: 84px 84px;
+    background-repeat: no-repeat;
+    filter: none;
     border-radius: 4px;
-    box-shadow: 0 4px 14px rgba(10, 102, 216, 0.25);
+    box-shadow: 0 4px 14px rgba(10, 102, 216, 0.18);
+    opacity: 0;
+    transform: scale(.75);
+    animation: logoPaneReveal 1.2s cubic-bezier(.2, .7, .3, 1) forwards;
+}
+
+.win-logo .pane:nth-child(1) {
+    grid-area: top-left;
+    background-position: 0 0;
+    animation-delay: 0s;
+}
+
+.win-logo .pane:nth-child(2) {
+    grid-area: top-right;
+    background-position: -42px 0;
+    animation-delay: .12s;
+}
+
+.win-logo .pane:nth-child(3) {
+    grid-area: bottom-left;
+    background-position: 0 -42px;
+    animation-delay: .24s;
+}
+
+.win-logo .pane:nth-child(4) {
+    grid-area: bottom-right;
+    background-position: -42px -42px;
+    animation-delay: .36s;
+}
+
+@keyframes logoPaneReveal {
+    0% {
+        opacity: 0;
+        transform: scale(.75);
+    }
+
+    35%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 .win-spinner {
@@ -2510,64 +2545,69 @@ body {
     top: 50%;
     transform-origin: center center;
     transform: translate(-50%, -50%) translateY(calc(-1 * var(--r))) scale(.6);
-    opacity: 0.25;
-    animation: winDot 1.2s cubic-bezier(.36, .07, .19, .97) infinite;
+    opacity: 0;
+    animation: winDot 0.82s cubic-bezier(.4, 0, .6, 1) infinite;
 }
 
 .win-spinner .d1 {
-    transform: translate(-50%, -50%) rotate(0deg) translateY(calc(-1 * var(--r))) scale(.6);
+    --angle: 0deg;
     animation-delay: 0s;
 }
 
 .win-spinner .d2 {
-    transform: translate(-50%, -50%) rotate(45deg) translateY(calc(-1 * var(--r))) scale(.6);
+    --angle: 45deg;
     animation-delay: 0.06s;
 }
 
 .win-spinner .d3 {
-    transform: translate(-50%, -50%) rotate(90deg) translateY(calc(-1 * var(--r))) scale(.6);
+    --angle: 90deg;
     animation-delay: 0.12s;
 }
 
 .win-spinner .d4 {
-    transform: translate(-50%, -50%) rotate(135deg) translateY(calc(-1 * var(--r))) scale(.6);
+    --angle: 135deg;
     animation-delay: 0.18s;
 }
 
 .win-spinner .d5 {
-    transform: translate(-50%, -50%) rotate(180deg) translateY(calc(-1 * var(--r))) scale(.6);
+    --angle: 180deg;
     animation-delay: 0.24s;
 }
 
 .win-spinner .d6 {
-    transform: translate(-50%, -50%) rotate(225deg) translateY(calc(-1 * var(--r))) scale(.6);
+    --angle: 225deg;
     animation-delay: 0.30s;
 }
 
 .win-spinner .d7 {
-    transform: translate(-50%, -50%) rotate(270deg) translateY(calc(-1 * var(--r))) scale(.6);
+    --angle: 270deg;
     animation-delay: 0.36s;
 }
 
 .win-spinner .d8 {
-    transform: translate(-50%, -50%) rotate(315deg) translateY(calc(-1 * var(--r))) scale(.6);
+    --angle: 315deg;
     animation-delay: 0.42s;
 }
 
 @keyframes winDot {
     0% {
-        opacity: 0.18;
-        transform: translate(-50%, -50%) translateY(calc(-1 * var(--r))) scale(.6);
+        opacity: 1;
+        transform: translate(-50%, -50%) rotate(var(--angle)) translateY(calc(-1 * var(--r))) scale(.6);
     }
 
-    50% {
+    18% {
         opacity: 1;
-        transform: translate(-50%, -50%) translateY(calc(-1 * var(--r))) scale(1);
+        transform: translate(-50%, -50%) rotate(var(--angle)) translateY(calc(-1 * var(--r))) scale(1);
+    }
+
+    68% {
+        opacity: 0.75;
+        transform: translate(-50%, -50%) rotate(var(--angle)) translateY(calc(-1 * var(--r))) scale(.82);
     }
 
     100% {
-        opacity: 0.18;
-        transform: translate(-50%, -50%) translateY(calc(-1 * var(--r))) scale(.6);
+        opacity: 0;
+        transform: translate(-50%, -50%) rotate(var(--angle)) translateY(calc(-1 * var(--r))) scale(.6);
     }
 }
 
@@ -3793,3 +3833,4 @@ body {
         bottom: calc(max(6px, env(safe-area-inset-bottom)) + 56px) !important;
     }
 }
+
